@@ -1,7 +1,9 @@
 import logo from './logo.svg';
 import './App.css';
 
+import React, { useEffect, useState } from "react";
 import axios from "axios";
+
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
@@ -17,12 +19,12 @@ function Musteri() {
     
             console.log("getAllCustomerInfo" + response.data.MusteriListesi);
 
-            setAllCustomers(response.data.);
+            setAllCustomers(response.data.MusteriListesi);
 
     }
  
     // call the function
-    getCustomerInfo().catch(console.error);
+    //getCustomerInfo().catch(console.error);
 
     // call the function
     getAllCustomerInfo().catch(console.error);
@@ -352,23 +354,24 @@ function Musteri() {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                     
                       {
-            allUsers.map( (data) => ( 
-                <> 
-                    <div>{data.first_name} - {data.last_name}</div> 
-                </>
+            allCustomers.map( (data) => (
+              <>
+                    <tr>  
+                        <td>1</td>
+                        <td>{data.MusteriAdi}</td>
+                        <td>{data.MusteriSoyadi}</td>
+                        <td>{data.Cinsiyet}</td>
+                        <td>{data.DogumTarihi}</td>
+                        <td>{data.Adres}</td>
+                        <td>{data.Sehir}</td>
+                      </tr>
+                      </>  
             )
             )
         } 
-                        <td>1</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                        <td>Table cell</td>
-                      </tr>
+                   
                     </tbody>
                   </table>
                 </div>

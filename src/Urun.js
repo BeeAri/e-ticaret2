@@ -1,10 +1,37 @@
 import logo from './logo.svg';
 import './App.css';
 
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
 function Urun() {
+
+  const[allProducts, setAllProducts] = useState([]);
+
+  useEffect(() => {
+  
+    const getAllProductInfo = async () => {
+        let response = await axios.get(
+            'https://private-10cb8d-baharari.apiary-mock.com/urun'
+            );
+    
+            console.log("getAllProductInfo" + response.data.UrunListesi);
+
+            setAllProducts(response.data.UrunListesi);
+
+    }
+ 
+    // call the function
+    //getCustomerInfo().catch(console.error);
+
+    // call the function
+    getAllProductInfo().catch(console.error);
+ 
+  }, [])
+
   return (
 <>
 <Header/>
@@ -318,36 +345,23 @@ function Urun() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>1</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                  </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                    <td>Table cell</td>
-                  </tr>
+                      {
+            allProducts.map( (data) => (
+              <>
+                    <tr>  
+                        <td>1</td>
+                        <td>{data.UrunAdi}</td>
+                        <td>{data.UrunKodu}</td>
+                        <td>{data.Kategori}</td>
+                        <td>{data.Fiyat}</td>
+                        <td>{data.ParaBirimi}</td>
+                        <td>{data.StokAdedi}</td>
+                        <td>{data.Aciklama}</td>
+                      </tr>
+                      </>  
+            )
+            )
+        } 
                 </tbody>
               </table>
             </div>
