@@ -538,7 +538,7 @@ function Header() {
         <div className="hor-menu ">
           <ul className="nav navbar-nav">
             <li>
-              <a href="index.html">ANASAYFA</a>
+              <Link to="/anasayfa">ANASAYFA</Link>
             </li>
             <li className="menu-dropdown classic-menu-dropdown ">
               <a

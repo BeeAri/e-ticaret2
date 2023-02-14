@@ -4,9 +4,7 @@ import './App.css';
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import Footer from "./Components/Footer";
-
-function Giris() {
+function Cıkıs() {
 
   const[allProducts, setAllProducts] = useState([]);
 
@@ -379,4 +377,4 @@ function Giris() {
   );
 }
 
-export default Giris;
+export default Cıkıs;
