@@ -6,6 +6,7 @@ import axios from "axios";
 
 function Giris() {
   return (
+    <div className="login">
 <>
   {/* BEGIN HEAD */}
   <meta charSet="utf-8" />
@@ -507,8 +508,9 @@ function Giris() {
   {/* END PAGE LEVEL SCRIPTS */}
   {/* END JAVASCRIPTS */}
   {/* END BODY */}
-</>
 
+</>
+</div>
 );
 }
 
