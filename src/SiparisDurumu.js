@@ -7,19 +7,20 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
-function Musteri() {
-  const[allCustomers, setAllCustomers] = useState([]);
+function SiparisDurumu() {
+
+  const[allOrderStatus, setAllOrderStatus] = useState([]);
 
   useEffect(() => {
   
-    const getAllCustomerInfo = async () => {
+    const getAllOrderStatusInfo = async () => {
         let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/musteri'
+            'https://private-10cb8d-baharari.apiary-mock.com/siparisdurumu'
             );
     
-            console.log("getAllCustomerInfo" + response.data.MusteriListesi);
+            console.log("getAllOrderStatusInfo" + response.data.SiparisDurumuListesi);
 
-            setAllCustomers(response.data.MusteriListesi);
+            setAllOrderStatus(response.data.SiparisDurumuListesi);
 
     }
  
@@ -27,7 +28,7 @@ function Musteri() {
     //getCustomerInfo().catch(console.error);
 
     // call the function
-    getAllCustomerInfo().catch(console.error);
+    getAllOrderStatusInfo().catch(console.error);
  
   }, [])
 
@@ -35,6 +36,7 @@ function Musteri() {
 <>
 <Header/>
 
+<>
   {/* BEGIN PAGE CONTAINER */}
   <div className="page-container">
     {/* BEGIN PAGE HEAD */}
@@ -43,7 +45,7 @@ function Musteri() {
         {/* BEGIN PAGE TITLE */}
         <div className="page-title">
           <h1>
-            Müşteri <small>Listesi</small>
+            Sipariş Durumu <small>Liste</small>
           </h1>
         </div>
         {/* END PAGE TITLE */}
@@ -291,44 +293,33 @@ function Musteri() {
         {/* BEGIN PAGE BREADCRUMB */}
         <ul className="page-breadcrumb breadcrumb">
           <li>
-            <a href="#">Tanımlar</a>
+            <a href="#">Ekran İçerikleri</a>
             <i className="fa fa-circle" />
           </li>
           <li>
-            <a href="#">Müşteri</a>
+            <a href="table_responsive.html">Sipariş Durumu</a>
             <i className="fa fa-circle" />
           </li>
           <li>
-            <a href="musteri_liste.html">Liste</a>
+            <a href="durum_liste.html">Liste</a>
           </li>
         </ul>
         {/* END PAGE BREADCRUMB */}
         {/* BEGIN PAGE CONTENT INNER */}
         <div className="row">
           <div className="col-md-12">
-            {/* <div className="note note-success note-bordered">
-              <p>
-                Listede müşteri ismi göremiyorsanız yeni müşteri olarak kayıt
-                oluşturabilirsiniz.
-              </p>
-            </div> */}
+            {/* <div class="note note-success note-bordered">
+						<p>
+							 Please try to re-size your browser window in order to see the tables in responsive mode.
+						</p>
+					</div> */}
             {/* BEGIN SAMPLE TABLE PORTLET*/}
             <div className="portlet light">
               <div className="portlet-title">
                 {/* <div class="caption">
 								<i class="fa fa-cogs font-green-sharp"></i>
-								<span class="caption-subject font-green-sharp bold uppercase">Müşteri Listesi</span>
+								<span class="caption-subject font-green-sharp bold uppercase">All in One Bootstrap 3.0 Responsive Table</span>
 							</div> */}
-                <div className="input-group">
-                  <span>
-                    <button className="btn" type="submit">
-                      Excel
-                    </button>
-                    <button className="btn" type="submit">
-                      PDF
-                    </button>
-                  </span>
-                </div>
                 <div className="tools">
                   <a href="javascript:;" className="collapse"></a>
                   {/* <a href="#portlet-config" data-toggle="modal" class="config">
@@ -345,37 +336,21 @@ function Musteri() {
                     <thead>
                       <tr>
                         <th>#</th>
-                        <th>Adı</th>
-                        <th>Soyadı</th>
-                        <th>Doğum Tarihi</th>
-                        <th>Cinsiyet</th>
-                        <th>E-mail</th>
-                        <th>GSM</th>
-                        <th>Şehir</th>
-                        <th>Adres</th>
+                        <th>Sipariş Durumu</th>
                       </tr>
                     </thead>
                     <tbody>
-                     
-                      {
-            allCustomers.map( (data) => (
+                    {
+            allOrderStatus.map( (data) => (
               <>
-                    <tr>  
+                      <tr>
                         <td>1</td>
-                        <td>{data.MusteriAdi}</td>
-                        <td>{data.MusteriSoyadi}</td>
-                        <td>{data.DogumTarihi}</td>
-                        <td>{data.Cinsiyet}</td>
-                        <td>{data.Email}</td>
-                        <td>{data.GSM}</td>
-                        <td>{data.Sehir}</td>
-                        <td>{data.Adres}</td>
+                        <td>{data.SiparisDurumu}</td>
                       </tr>
-                      </>  
+              </>
             )
             )
-        } 
-                   
+          }   
                     </tbody>
                   </table>
                 </div>
@@ -390,11 +365,16 @@ function Musteri() {
     {/* END PAGE CONTENT */}
   </div>
   {/* END PAGE CONTAINER */}
-  
+</>
+
+
+
+
+
   <Footer/>
 
 </>
   );
 }
 
-export default Musteri;
+export default SiparisDurumu;

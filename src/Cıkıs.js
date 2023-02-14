@@ -4,22 +4,22 @@ import './App.css';
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
-function Musteri() {
-  const[allCustomers, setAllCustomers] = useState([]);
+function Giris() {
+
+  const[allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
   
-    const getAllCustomerInfo = async () => {
+    const getAllProductInfo = async () => {
         let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/musteri'
+            'https://private-10cb8d-baharari.apiary-mock.com/urun'
             );
     
-            console.log("getAllCustomerInfo" + response.data.MusteriListesi);
+            console.log("getAllProductInfo" + response.data.UrunListesi);
 
-            setAllCustomers(response.data.MusteriListesi);
+            setAllProducts(response.data.UrunListesi);
 
     }
  
@@ -27,13 +27,12 @@ function Musteri() {
     //getCustomerInfo().catch(console.error);
 
     // call the function
-    getAllCustomerInfo().catch(console.error);
+    getAllProductInfo().catch(console.error);
  
   }, [])
 
   return (
 <>
-<Header/>
 
   {/* BEGIN PAGE CONTAINER */}
   <div className="page-container">
@@ -43,7 +42,7 @@ function Musteri() {
         {/* BEGIN PAGE TITLE */}
         <div className="page-title">
           <h1>
-            Müşteri <small>Listesi</small>
+            Ürün <small>Listesi</small>
           </h1>
         </div>
         {/* END PAGE TITLE */}
@@ -295,106 +294,89 @@ function Musteri() {
             <i className="fa fa-circle" />
           </li>
           <li>
-            <a href="#">Müşteri</a>
+            <a href="table_responsive.html">Ürün</a>
             <i className="fa fa-circle" />
           </li>
           <li>
-            <a href="musteri_liste.html">Liste</a>
+            <a href="urun_liste.html">Liste</a>
           </li>
         </ul>
         {/* END PAGE BREADCRUMB */}
         {/* BEGIN PAGE CONTENT INNER */}
-        <div className="row">
-          <div className="col-md-12">
-            {/* <div className="note note-success note-bordered">
-              <p>
-                Listede müşteri ismi göremiyorsanız yeni müşteri olarak kayıt
-                oluşturabilirsiniz.
-              </p>
-            </div> */}
-            {/* BEGIN SAMPLE TABLE PORTLET*/}
-            <div className="portlet light">
-              <div className="portlet-title">
-                {/* <div class="caption">
+        {/* <div class="row">
+				<div class="col-md-12">
+					<div class="note note-success note-bordered">
+						<p>
+							 Please try to re-size your browser window in order to see the tables in responsive mode.
+						</p>
+					</div> */}
+        {/* BEGIN SAMPLE TABLE PORTLET*/}
+        <div className="portlet light">
+          <div className="portlet-title">
+            {/* <div class="caption">
 								<i class="fa fa-cogs font-green-sharp"></i>
-								<span class="caption-subject font-green-sharp bold uppercase">Müşteri Listesi</span>
+								<span class="caption-subject font-green-sharp bold uppercase">All in One Bootstrap 3.0 Responsive Table</span>
 							</div> */}
-                <div className="input-group">
-                  <span>
-                    <button className="btn" type="submit">
-                      Excel
-                    </button>
-                    <button className="btn" type="submit">
-                      PDF
-                    </button>
-                  </span>
-                </div>
-                <div className="tools">
-                  <a href="javascript:;" className="collapse"></a>
-                  {/* <a href="#portlet-config" data-toggle="modal" class="config">
+            <div className="tools">
+              <a href="javascript:;" className="collapse"></a>
+              {/* <a href="#portlet-config" data-toggle="modal" class="config">
 								</a>
 								<a href="javascript:;" class="reload">
 								</a>
 								<a href="javascript:;" class="remove">
 								</a> */}
-                </div>
-              </div>
-              <div className="portlet-body">
-                <div className="table-responsive">
-                  <table className="table table-striped table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Adı</th>
-                        <th>Soyadı</th>
-                        <th>Doğum Tarihi</th>
-                        <th>Cinsiyet</th>
-                        <th>E-mail</th>
-                        <th>GSM</th>
-                        <th>Şehir</th>
-                        <th>Adres</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                     
+            </div>
+          </div>
+          <div className="portlet-body">
+            <div className="table-responsive">
+              <table className="table table-striped table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Ürün Adı</th>
+                    <th>Kodu</th>
+                    <th>Kategorisi</th>
+                    <th>Fiyatı</th>
+                    <th>Para Birimi</th>
+                    <th>Stok Adedi</th>
+                    <th>Açıklama</th>
+                  </tr>
+                </thead>
+                <tbody>
                       {
-            allCustomers.map( (data) => (
+            allProducts.map( (data) => (
               <>
                     <tr>  
                         <td>1</td>
-                        <td>{data.MusteriAdi}</td>
-                        <td>{data.MusteriSoyadi}</td>
-                        <td>{data.DogumTarihi}</td>
-                        <td>{data.Cinsiyet}</td>
-                        <td>{data.Email}</td>
-                        <td>{data.GSM}</td>
-                        <td>{data.Sehir}</td>
-                        <td>{data.Adres}</td>
+                        <td>{data.UrunAdi}</td>
+                        <td>{data.UrunKodu}</td>
+                        <td>{data.Kategori}</td>
+                        <td>{data.Fiyat}</td>
+                        <td>{data.ParaBirimi}</td>
+                        <td>{data.StokAdedi}</td>
+                        <td>{data.Aciklama}</td>
                       </tr>
                       </>  
             )
             )
         } 
-                   
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+                </tbody>
+              </table>
             </div>
-            {/* END SAMPLE TABLE PORTLET*/}
           </div>
         </div>
-        {/* END PAGE CONTENT INNER */}
+        {/* END SAMPLE TABLE PORTLET*/}
       </div>
     </div>
-    {/* END PAGE CONTENT */}
+    {/* END PAGE CONTENT INNER */}
   </div>
+  {/* END PAGE CONTENT */}
   {/* END PAGE CONTAINER */}
-  
+
   <Footer/>
 
 </>
   );
 }
 
-export default Musteri;
+export default Giris;

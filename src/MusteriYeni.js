@@ -35,6 +35,7 @@ function Musteri() {
 <>
 <Header/>
 
+<>
   {/* BEGIN PAGE CONTAINER */}
   <div className="page-container">
     {/* BEGIN PAGE HEAD */}
@@ -43,7 +44,7 @@ function Musteri() {
         {/* BEGIN PAGE TITLE */}
         <div className="page-title">
           <h1>
-            Müşteri <small>Listesi</small>
+            Müşteri <small>Yeni Kayıt</small>
           </h1>
         </div>
         {/* END PAGE TITLE */}
@@ -295,101 +296,246 @@ function Musteri() {
             <i className="fa fa-circle" />
           </li>
           <li>
-            <a href="#">Müşteri</a>
+            <a href="form_controls_md.html">Müşteri</a>
             <i className="fa fa-circle" />
           </li>
-          <li>
-            <a href="musteri_liste.html">Liste</a>
-          </li>
+          <li className="active">Yeni Kayıt</li>
         </ul>
         {/* END PAGE BREADCRUMB */}
         {/* BEGIN PAGE CONTENT INNER */}
         <div className="row">
           <div className="col-md-12">
-            {/* <div className="note note-success note-bordered">
-              <p>
-                Listede müşteri ismi göremiyorsanız yeni müşteri olarak kayıt
-                oluşturabilirsiniz.
-              </p>
-            </div> */}
-            {/* BEGIN SAMPLE TABLE PORTLET*/}
+            {/* BEGIN SAMPLE FORM PORTLET*/}
             <div className="portlet light">
               <div className="portlet-title">
-                {/* <div class="caption">
-								<i class="fa fa-cogs font-green-sharp"></i>
-								<span class="caption-subject font-green-sharp bold uppercase">Müşteri Listesi</span>
+                {/* <div class="caption font-green-haze">
+								<i class="icon-settings font-green-haze"></i>
+								<span class="caption-subject bold uppercase"> Horizontal Form</span>
 							</div> */}
-                <div className="input-group">
-                  <span>
-                    <button className="btn" type="submit">
-                      Excel
-                    </button>
-                    <button className="btn" type="submit">
-                      PDF
-                    </button>
-                  </span>
-                </div>
-                <div className="tools">
-                  <a href="javascript:;" className="collapse"></a>
-                  {/* <a href="#portlet-config" data-toggle="modal" class="config">
+                <div className="actions">
+                  {/* <a class="btn btn-circle btn-icon-only blue" href="javascript:;">
+								<i class="icon-cloud-upload"></i>
 								</a>
-								<a href="javascript:;" class="reload">
+								<a class="btn btn-circle btn-icon-only green" href="javascript:;">
+								<i class="icon-wrench"></i>
 								</a>
-								<a href="javascript:;" class="remove">
+								<a class="btn btn-circle btn-icon-only red" href="javascript:;">
+								<i class="icon-trash"></i>
 								</a> */}
+                  <a
+                    className="btn btn-circle btn-icon-only btn-default fullscreen"
+                    href="javascript:;"
+                    data-original-title=""
+                    title=""
+                  ></a>
                 </div>
               </div>
-              <div className="portlet-body">
-                <div className="table-responsive">
-                  <table className="table table-striped table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Adı</th>
-                        <th>Soyadı</th>
-                        <th>Doğum Tarihi</th>
-                        <th>Cinsiyet</th>
-                        <th>E-mail</th>
-                        <th>GSM</th>
-                        <th>Şehir</th>
-                        <th>Adres</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                     
-                      {
-            allCustomers.map( (data) => (
-              <>
-                    <tr>  
-                        <td>1</td>
-                        <td>{data.MusteriAdi}</td>
-                        <td>{data.MusteriSoyadi}</td>
-                        <td>{data.DogumTarihi}</td>
-                        <td>{data.Cinsiyet}</td>
-                        <td>{data.Email}</td>
-                        <td>{data.GSM}</td>
-                        <td>{data.Sehir}</td>
-                        <td>{data.Adres}</td>
-                      </tr>
-                      </>  
-            )
-            )
-        } 
-                   
-                    </tbody>
-                  </table>
-                </div>
+              <div className="portlet-body form">
+                <form role="form" className="form-horizontal">
+                  <div className="form-body">
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="txtName"
+                      >
+                        Adı*
+                      </label>
+                      <div className="col-md-10">
+                        <input
+                          required=""
+                          autoComplete="off"
+                          type="text"
+                          className="form-control"
+                          id="txtName"
+                          name="txtName"
+                          maxLength={50}
+                        />
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="txtSurname"
+                      >
+                        Soyadı*
+                      </label>
+                      <div className="col-md-10">
+                        <input
+                          required=""
+                          autoComplete="off"
+                          type="text"
+                          className="form-control"
+                          id="txtSurname"
+                          name="txtSurname"
+                          maxLength={50}
+                        />
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="dtBirthDate"
+                      >
+                        Doğum Tarihi
+                      </label>
+                      <div className="col-md-10">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="dtBirthDate"
+                          name="dtBirthDate"
+                          placeholder="GG/AA/YYYY formatında giriniz"
+                        />
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="rdGender"
+                      >
+                        Cinsiyet
+                      </label>
+                      <div className="col-md-10">
+                        <div className="md-radio-inline">
+                          <div className="md-radio">
+                            <input
+                              type="radio"
+                              id="radio53"
+                              name="rdGender"
+                              className="md-radiobtn"
+                            />
+                            <label htmlFor="radio53">
+                              <span />
+                              <span className="check" />
+                              <span className="box" />
+                              Erkek{" "}
+                            </label>
+                          </div>
+                          <div className="md-radio">
+                            <input
+                              type="radio"
+                              id="radio54"
+                              name="rdGender"
+                              className="md-radiobtn"
+                            />
+                            <label htmlFor="radio54">
+                              <span />
+                              <span className="check" />
+                              <span className="box" />
+                              Kadın{" "}
+                            </label>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="txtEmail"
+                      >
+                        E-mail
+                      </label>
+                      <div className="col-md-10">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="txtEmail"
+                          name="txtEmail"
+                          placeholder="email@ornek.com"
+                          maxLength={50}
+                        />
+                        <div className="form-control-focus"></div>
+                        {/* <span class="help-block">Some help goes here...</span> */}
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="txtGSM"
+                      >
+                        GSM*
+                      </label>
+                      <div className="col-md-10">
+                        <input
+                          required=""
+                          type="text"
+                          className="form-control"
+                          id="txtGSM"
+                          name="txtGSM"
+                          placeholder="5XXXXXXXXX formatında giriniz"
+                          maxLength={10}
+                        />
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                        Şehir
+                      </label>
+                      <div className="col-md-10">
+                        <select className="form-control" id="form_control_1">
+                          <option value="">Lütfen Seçiniz...</option>
+                          <option value="">Ankara</option>
+                          <option value="">Bursa</option>
+                          <option value="">İstanbul</option>
+                          <option value="">İzmir</option>
+                        </select>
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="txtAdress"
+                      >
+                        Adres*
+                      </label>
+                      <div className="col-md-10">
+                        <textarea
+                          autoComplete="off"
+                          className="form-control"
+                          rows={3}
+                          id="txtAdress"
+                          name="txtAdress"
+                          placeholder="Açık Adresiniz..."
+                          maxLength={500}
+                          defaultValue={""}
+                        />
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="form-actions">
+                    <div className="row">
+                      <div className="col-md-offset-2 col-md-10">
+                        <button type="button" className="btn blue">
+                          Kaydet
+                        </button>
+                        <button type="button" className="btn default">
+                          Vazgeç
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
-            {/* END SAMPLE TABLE PORTLET*/}
+            {/* END SAMPLE FORM PORTLET*/}
           </div>
         </div>
-        {/* END PAGE CONTENT INNER */}
       </div>
     </div>
     {/* END PAGE CONTENT */}
   </div>
   {/* END PAGE CONTAINER */}
+</>
+
   
   <Footer/>
 

@@ -6,14 +6,14 @@ function Footer() {
     <div className="container">
       <div className="row">
         <div className="col-md-3 col-sm-6 col-xs-12 footer-block">
-          <h2>About</h2>
+          <h2>Hakkında</h2>
           <p>
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
             dolore.
           </p>
         </div>
         <div className="col-md-3 col-sm-6 col-xs12 footer-block">
-          <h2>Subscribe Email</h2>
+          <h2>e-mail</h2>
           <div className="subscribe-form">
             <form action="javascript:;">
               <div className="input-group">
@@ -24,7 +24,7 @@ function Footer() {
                 />
                 <span className="input-group-btn">
                   <button className="btn" type="submit">
-                    Submit
+                    Gönder
                   </button>
                 </span>
               </div>
@@ -32,7 +32,7 @@ function Footer() {
           </div>
         </div>
         <div className="col-md-3 col-sm-6 col-xs-12 footer-block">
-          <h2>Follow Us On</h2>
+          <h2>Bizi Takip Edin</h2>
           <ul className="social-icons">
             <li>
               <a
@@ -86,11 +86,11 @@ function Footer() {
           </ul>
         </div>
         <div className="col-md-3 col-sm-6 col-xs-12 footer-block">
-          <h2>Contacts</h2>
+          <h2>İletişim</h2>
           <address className="margin-bottom-40">
-            Phone: 800 123 3456
+            Telefon: 800 123 3456
             <br />
-            Email: <a href="mailto:info@metronic.com">info@metronic.com</a>
+            E-mail: <a href="mailto:info@metronic.com">bilgi@mail.com</a>
           </address>
         </div>
       </div>

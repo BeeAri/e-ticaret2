@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Header() {
     return (
   <>
@@ -549,30 +551,30 @@ function Header() {
               </a>
               <ul className="dropdown-menu pull-left">
                 <li className=" dropdown-submenu">
-                  <a href=":;">
+                  <Link to=":;">
                     <i className="icon-user" />
                     Müşteri{" "}
-                  </a>
+                  </Link> 
                   <ul className="dropdown-menu">
                     <li className=" ">
-                      <a href="musteri_liste.html">Müşteri Listesi </a>
+                      <Link to="/musteri">Müşteri Listesi </Link> 
                     </li>
                     <li className=" ">
-                      <a href="musteri_yeni.html">Yeni Kayıt </a>
+                      <Link to="/musteriyeni">Yeni Kayıt </Link> 
                     </li>
                   </ul>
                 </li>
                 <li className=" dropdown-submenu">
-                  <a href=":;">
+                  <Link to=":;">
                     <i className="icon-wallet" />
                     Ürün{" "}
-                  </a>
+                  </Link> 
                   <ul className="dropdown-menu">
                     <li className=" ">
-                      <a href="urun_liste.html">Ürün Listesi </a>
+                      <Link to="/urun">Ürün Listesi </Link> 
                     </li>
                     <li className=" ">
-                      <a href="urun_yeni.html">Yeni Ürün</a>
+                      <Link to="urun_yeni.html">Yeni Ürün</Link> 
                     </li>
                   </ul>
                 </li>
@@ -586,47 +588,47 @@ function Header() {
                 href="javascript:;"
               >
                 OPERASYON <i className="fa fa-angle-down" />
-              </a>
+              </a> 
               <ul className="dropdown-menu pull-left">
                 <li className=" dropdown-submenu">
-                  <a href=":;">
+                  <Link to=":;">
                     <i className="icon-briefcase" />
                     Sipariş{" "}
-                  </a>
+                  </Link>
                   <ul className="dropdown-menu">
                     <li className=" ">
-                      <a href="siparis_liste.html">Sipariş Listesi </a>
+                      <Link to="/siparis">Sipariş Listesi </Link>
                     </li>
                     <li className=" ">
-                      <a href="siparis_yeni.html">Yeni Sipariş </a>
+                      <Link to="siparis_yeni.html">Yeni Sipariş </Link>
                     </li>
                   </ul>
                 </li>
                 <li className=" dropdown-submenu">
-                  <a href=":;">
+                  <Link to=":;">
                     <i className="icon-wallet" />
                     Tahsilat{" "}
-                  </a>
+                  </Link>
                   <ul className="dropdown-menu">
                     <li className=" ">
-                      <a href="tahsilat_liste.html">Tahsilat Listesi </a>
+                      <Link to="/tahsilat">Tahsilat Listesi </Link>
                     </li>
                     <li className=" ">
-                      <a href="tahsilat_yeni.html">Yeni Tahsilat</a>
+                      <Link to="tahsilat_yeni.html">Yeni Tahsilat</Link>
                     </li>
                   </ul>
                 </li>
                 <li className=" dropdown-submenu">
-                  <a href=":;">
+                  <Link to=":;">
                     <i className="icon-bar-chart" />
                     Ödeme{" "}
-                  </a>
+                  </Link>
                   <ul className="dropdown-menu">
                     <li className=" ">
-                      <a href="odeme_liste.html">Ödeme Listesi </a>
+                      <Link to="/odeme">Ödeme Listesi </Link>
                     </li>
                     <li className=" ">
-                      <a href="odeme_yeni.html">Yeni Ödeme </a>
+                      <Link to="odeme_yeni.html">Yeni Ödeme </Link>
                     </li>
                   </ul>
                 </li>
@@ -643,58 +645,58 @@ function Header() {
               </a>
               <ul className="dropdown-menu pull-left">
                 <li className=" dropdown-submenu">
-                  <a href=":;">
+                  <Link to=":;">
                     <i className="icon-briefcase" />
                     Sipariş Durumu{" "}
-                  </a>
+                  </Link>
                   <ul className="dropdown-menu">
                     <li className=" ">
-                      <a href="durum_liste.html">Liste </a>
+                      <Link to="/siparisDurumu">Liste </Link>
                     </li>
                     <li className=" ">
-                      <a href="durum_yeni.html">Yeni </a>
+                      <Link to="durum_yeni.html">Yeni </Link>
                     </li>
                   </ul>
                 </li>
                 <li className=" dropdown-submenu">
-                  <a href=":;">
+                  <Link to=":;">
                     <i className="icon-pointer" />
                     Şehir{" "}
-                  </a>
+                  </Link>
                   <ul className="dropdown-menu">
                     <li className=" ">
-                      <a href="sehir_liste.html">Liste </a>
+                      <Link to="/sehir">Liste </Link>
                     </li>
                     <li className=" ">
-                      <a href="sehir_yeni.html">Yeni </a>
+                      <Link to="sehir_yeni.html">Yeni </Link>
                     </li>
                   </ul>
                 </li>
                 <li className=" dropdown-submenu">
-                  <a href=":;">
+                  <Link to=":;">
                     <i className="icon-bar-chart" />
                     Tahsilat Tipi{" "}
-                  </a>
+                  </Link>
                   <ul className="dropdown-menu">
                     <li className=" ">
-                      <a href="tahsilattipi_liste.html">Liste </a>
+                      <Link to="/tahsilatTipi">Liste </Link>
                     </li>
                     <li className=" ">
-                      <a href="tahsilattipi_yeni.html">Yeni </a>
+                      <Link to="tahsilattipi_yeni.html">Yeni </Link>
                     </li>
                   </ul>
                 </li>
                 <li className=" dropdown-submenu">
-                  <a href=":;">
+                  <Link to=":;">
                     <i className="icon-pointer" />
                     Ürün Kategorisi{" "}
-                  </a>
+                  </Link>
                   <ul className="dropdown-menu">
                     <li className=" ">
-                      <a href="kategori_liste.html">Liste </a>
+                      <Link to="/urunkategorisi">Liste </Link>
                     </li>
                     <li className=" ">
-                      <a href="kategori_yeni.html">Yeni </a>
+                      <Link to="kategori_yeni.html">Yeni </Link>
                     </li>
                   </ul>
                 </li>
