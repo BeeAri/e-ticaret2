@@ -7,7 +7,7 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
-function Musteri() {
+function MusteriYeni() {
   const[allCustomers, setAllCustomers] = useState([]);
 
   useEffect(() => {
@@ -543,4 +543,4 @@ function Musteri() {
   );
 }
 
-export default Musteri;
+export default MusteriYeni;

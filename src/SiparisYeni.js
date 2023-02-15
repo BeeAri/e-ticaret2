@@ -7,7 +7,7 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
-function Siparis() {
+function SiparisYeni() {
 
   const[allOrders, setAllOrders] = useState([]);
 
@@ -45,7 +45,7 @@ function Siparis() {
         {/* BEGIN PAGE TITLE */}
         <div className="page-title">
           <h1>
-            Sipariş <small>Liste</small>
+            Sipariş <small>Yeni Sipariş</small>
           </h1>
         </div>
         {/* END PAGE TITLE */}
@@ -297,79 +297,163 @@ function Siparis() {
             <i className="fa fa-circle" />
           </li>
           <li>
-            <a href="table_responsive.html">Sipariş</a>
+            <a href="form_controls_md.html">Sipariş</a>
             <i className="fa fa-circle" />
           </li>
-          <li>
-            <a href="siparis_liste.html">Liste</a>
-          </li>
+          <li className="active">Yeni Sipariş</li>
         </ul>
         {/* END PAGE BREADCRUMB */}
         {/* BEGIN PAGE CONTENT INNER */}
         <div className="row">
           <div className="col-md-12">
-            {/* <div class="note note-success note-bordered">
-						<p>
-							 Please try to re-size your browser window in order to see the tables in responsive mode.
-						</p>
-					</div> */}
-            {/* BEGIN SAMPLE TABLE PORTLET*/}
+            {/* BEGIN SAMPLE FORM PORTLET*/}
             <div className="portlet light">
               <div className="portlet-title">
-                {/* <div class="caption">
-								<i class="fa fa-cogs font-green-sharp"></i>
-								<span class="caption-subject font-green-sharp bold uppercase">All in One Bootstrap 3.0 Responsive Table</span>
+                {/* <div class="caption font-green-haze">
+								<i class="icon-settings font-green-haze"></i>
+								<span class="caption-subject bold uppercase"> Horizontal Form</span>
 							</div> */}
-                <div className="tools">
-                  <a href="javascript:;" className="collapse"></a>
-                  {/* <a href="#portlet-config" data-toggle="modal" class="config">
+                <div className="actions">
+                  {/* <a class="btn btn-circle btn-icon-only blue" href="javascript:;">
+								<i class="icon-cloud-upload"></i>
 								</a>
-								<a href="javascript:;" class="reload">
+								<a class="btn btn-circle btn-icon-only green" href="javascript:;">
+								<i class="icon-wrench"></i>
 								</a>
-								<a href="javascript:;" class="remove">
+								<a class="btn btn-circle btn-icon-only red" href="javascript:;">
+								<i class="icon-trash"></i>
 								</a> */}
+                  <a
+                    className="btn btn-circle btn-icon-only btn-default fullscreen"
+                    href="javascript:;"
+                    data-original-title=""
+                    title=""
+                  ></a>
                 </div>
               </div>
-              <div className="portlet-body">
-                <div className="table-responsive">
-                  <table className="table table-striped table-bordered table-hover">
-                    <thead>
-                      <tr>
-                        <th>#</th>
-                        <th>Siparişi Veren</th>
-                        <th>Sipariş Tarihi</th>
-                        <th>Toplam Tutar</th>
-                        <th>Para Birimi</th>
-                        <th>Sipariş Detayı</th>
-                        <th>Teslim Durumu</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    {
-            allOrders.map( (data) => (
-              <>
-                      <tr>
-                        <td>1</td>
-                        <td>{data.SiparisiVeren}</td>
-                        <td>{data.SiparisTarihi}</td>
-                        <td>{data.ToplamTutar}</td>
-                        <td>{data.ParaBirimi}</td>
-                        <td>{data.SiparisDetayi}</td>
-                        <td>{data.TeslimDurumu}</td>
-                      </tr>
-                      </>
-            )
-            )
-}
-                    </tbody>
-                  </table>
-                </div>
+              <div className="portlet-body form">
+                <form role="form" className="form-horizontal">
+                  <div className="form-body">
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                        Siparişi Veren
+                      </label>
+                      <div className="col-md-10">
+                        <select className="form-control" id="form_control_1">
+                          <option value="">Lütfen Seçiniz...</option>
+                          <option value="">m1</option>
+                          <option value="">m2</option>
+                          <option value="">m3</option>
+                        </select>
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                        Sipariş Tarihi
+                      </label>
+                      <div className="col-md-10">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="form_control_1"
+                          placeholder="GG/AA/YYYY şeklinde giriniz."
+                        />
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                        Toplam Tutar
+                      </label>
+                      <div className="col-md-10">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="form_control_1"
+                        />
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                        Para Birimi
+                      </label>
+                      <div className="col-md-10">
+                        <select className="form-control" id="form_control_1">
+                          <option value="">Lütfen Seçiniz...</option>
+                          <option value="">TL</option>
+                          <option value="">Euro</option>
+                          <option value="">Dolar</option>
+                        </select>
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                        Sipariş Detayı
+                      </label>
+                      <div className="col-md-10">
+                        <textarea
+                          className="form-control"
+                          rows={3}
+                          placeholder="Siparişin Detayı Hakkında Yazınız..."
+                          defaultValue={""}
+                        />
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                        Sipariş Durumu
+                      </label>
+                      <div className="col-md-10">
+                        <select className="form-control" id="form_control_1">
+                          <option value="">Lütfen Seçiniz...</option>
+                          <option value="">Gönderildi</option>
+                          <option value="">Yolda</option>
+                          <option value="">Gönderilmedi</option>
+                        </select>
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="form-actions">
+                    <div className="row">
+                      <div className="col-md-offset-2 col-md-10">
+                        <button type="button" className="btn blue">
+                          Kaydet
+                        </button>
+                        <button type="button" className="btn default">
+                          Vazgeç
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
               </div>
             </div>
-            {/* END SAMPLE TABLE PORTLET*/}
+            {/* END SAMPLE FORM PORTLET*/}
           </div>
         </div>
-        {/* END PAGE CONTENT INNER */}
       </div>
     </div>
     {/* END PAGE CONTENT */}
@@ -378,10 +462,11 @@ function Siparis() {
 </>
 
 
+
   <Footer/>
 
 </>
   );
 }
 
-export default Siparis;
+export default SiparisYeni;

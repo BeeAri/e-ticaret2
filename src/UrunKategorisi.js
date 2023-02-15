@@ -7,7 +7,7 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
-function Tahsilat() {
+function UrunKategorisi() {
 
   const[allProductCategory, setAllProductCategory] = useState([]);
 
@@ -377,4 +377,4 @@ function Tahsilat() {
   );
 }
 
-export default Tahsilat;
+export default UrunKategorisi;

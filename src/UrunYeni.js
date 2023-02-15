@@ -7,7 +7,7 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
-function Urun() {
+function UrunYeni() {
 
   const[allProducts, setAllProducts] = useState([]);
 
@@ -36,6 +36,7 @@ function Urun() {
 <>
 <Header/>
 
+<>
   {/* BEGIN PAGE CONTAINER */}
   <div className="page-container">
     {/* BEGIN PAGE HEAD */}
@@ -44,7 +45,7 @@ function Urun() {
         {/* BEGIN PAGE TITLE */}
         <div className="page-title">
           <h1>
-            Ürün <small>Listesi</small>
+            Ürün <small>Yeni Ürün</small>
           </h1>
         </div>
         {/* END PAGE TITLE */}
@@ -296,84 +297,185 @@ function Urun() {
             <i className="fa fa-circle" />
           </li>
           <li>
-            <a href="table_responsive.html">Ürün</a>
+            <a href="form_controls_md.html">Ürün</a>
             <i className="fa fa-circle" />
           </li>
-          <li>
-            <a href="urun_liste.html">Liste</a>
-          </li>
+          <li className="active">Yeni Ürün</li>
         </ul>
         {/* END PAGE BREADCRUMB */}
         {/* BEGIN PAGE CONTENT INNER */}
-        {/* <div class="row">
-				<div class="col-md-12">
-					<div class="note note-success note-bordered">
-						<p>
-							 Please try to re-size your browser window in order to see the tables in responsive mode.
-						</p>
-					</div> */}
-        {/* BEGIN SAMPLE TABLE PORTLET*/}
-        <div className="portlet light">
-          <div className="portlet-title">
-            {/* <div class="caption">
-								<i class="fa fa-cogs font-green-sharp"></i>
-								<span class="caption-subject font-green-sharp bold uppercase">All in One Bootstrap 3.0 Responsive Table</span>
+        <div className="row">
+          <div className="col-md-12">
+            {/* BEGIN SAMPLE FORM PORTLET*/}
+            <div className="portlet light">
+              <div className="portlet-title">
+                {/* <div class="caption font-green-haze">
+								<i class="icon-settings font-green-haze"></i>
+								<span class="caption-subject bold uppercase"> Horizontal Form</span>
 							</div> */}
-            <div className="tools">
-              <a href="javascript:;" className="collapse"></a>
-              {/* <a href="#portlet-config" data-toggle="modal" class="config">
+                <div className="actions">
+                  {/* <a class="btn btn-circle btn-icon-only blue" href="javascript:;">
+								<i class="icon-cloud-upload"></i>
 								</a>
-								<a href="javascript:;" class="reload">
+								<a class="btn btn-circle btn-icon-only green" href="javascript:;">
+								<i class="icon-wrench"></i>
 								</a>
-								<a href="javascript:;" class="remove">
+								<a class="btn btn-circle btn-icon-only red" href="javascript:;">
+								<i class="icon-trash"></i>
 								</a> */}
+                  <a
+                    className="btn btn-circle btn-icon-only btn-default fullscreen"
+                    href="javascript:;"
+                    data-original-title=""
+                    title=""
+                  ></a>
+                </div>
+              </div>
+              <div className="portlet-body form">
+                <form role="form" className="form-horizontal">
+                  <div className="form-body">
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                        Ürün Adı
+                      </label>
+                      <div className="col-md-10">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="form_control_1"
+                        />
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                        Kodu
+                      </label>
+                      <div className="col-md-10">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="form_control_1"
+                        />
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                        Kategorisi
+                      </label>
+                      <div className="col-md-10">
+                        <select className="form-control" id="form_control_1">
+                          <option value="">Lütfen Seçiniz...</option>
+                          <option value="">1</option>
+                          <option value="">2</option>
+                          <option value="">3</option>
+                        </select>
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                        Fiyatı
+                      </label>
+                      <div className="col-md-10">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="form_control_1"
+                        />
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                        Para Birimi
+                      </label>
+                      <div className="col-md-10">
+                        <select className="form-control" id="form_control_1">
+                          <option value="">Lütfen Seçiniz...</option>
+                          <option value="">TL</option>
+                          <option value="">Euro</option>
+                          <option value="">Dolar</option>
+                        </select>
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                        Stok Adedi
+                      </label>
+                      <div className="col-md-10">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="form_control_1"
+                        />
+                        <div className="form-control-focus"></div>
+                        {/* <span class="help-block">Some help goes here...</span> */}
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                        Açıklama
+                      </label>
+                      <div className="col-md-10">
+                        <textarea
+                          className="form-control"
+                          rows={3}
+                          placeholder="Ürün Hakkında Açıklama Yazınız..."
+                          defaultValue={""}
+                        />
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div className="form-actions">
+                    <div className="row">
+                      <div className="col-md-offset-2 col-md-10">
+                        <button type="button" className="btn blue">
+                          Kaydet
+                        </button>
+                        <button type="button" className="btn default">
+                          Vazgeç
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
-          </div>
-          <div className="portlet-body">
-            <div className="table-responsive">
-              <table className="table table-striped table-bordered table-hover">
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Ürün Adı</th>
-                    <th>Kodu</th>
-                    <th>Kategorisi</th>
-                    <th>Fiyatı</th>
-                    <th>Para Birimi</th>
-                    <th>Stok Adedi</th>
-                    <th>Açıklama</th>
-                  </tr>
-                </thead>
-                <tbody>
-                      {
-            allProducts.map( (data) => (
-              <>
-                    <tr>  
-                        <td>1</td>
-                        <td>{data.UrunAdi}</td>
-                        <td>{data.UrunKodu}</td>
-                        <td>{data.Kategori}</td>
-                        <td>{data.Fiyat}</td>
-                        <td>{data.ParaBirimi}</td>
-                        <td>{data.StokAdedi}</td>
-                        <td>{data.Aciklama}</td>
-                      </tr>
-                      </>  
-            )
-            )
-        } 
-                </tbody>
-              </table>
-            </div>
+            {/* END SAMPLE FORM PORTLET*/}
           </div>
         </div>
-        {/* END SAMPLE TABLE PORTLET*/}
       </div>
     </div>
-    {/* END PAGE CONTENT INNER */}
+    {/* END PAGE CONTENT */}
   </div>
-  {/* END PAGE CONTENT */}
   {/* END PAGE CONTAINER */}
+</>
+
 
   <Footer/>
 
@@ -381,4 +483,4 @@ function Urun() {
   );
 }
 
-export default Urun;
+export default UrunYeni;

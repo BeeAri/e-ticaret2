@@ -7,7 +7,7 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
-function Tahsilat() {
+function Sehir() {
 
   const[allCity, setAllCity] = useState([]);
 
@@ -375,4 +375,4 @@ function Tahsilat() {
   );
 }
 
-export default Tahsilat;
+export default Sehir;

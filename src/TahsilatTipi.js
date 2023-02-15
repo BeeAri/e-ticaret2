@@ -7,7 +7,7 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
-function Tahsilat() {
+function TahsilatTipi() {
 
   const[allCollectionStatus, setAllCollectionStatus] = useState([]);
 
@@ -373,4 +373,4 @@ function Tahsilat() {
   );
 }
 
-export default Tahsilat;
+export default TahsilatTipi;

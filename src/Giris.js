@@ -3,11 +3,60 @@ import './App.css';
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 function Giris() {
+  	
+
+	const[name, setName] = useState(); 
+	const[password, setPassword] = useState(); 
+	const[result, setResult] = useState(); 
+   
+	const myButtonClick = async () => {
+  
+// alert("merhaba, kullanıcı adı: " + name + "  şifre: " + password);
+
+		  let requestBody = {
+		  service_val_name:name,
+		  service_val_password:password
+		}
+  
+		// console.log("Request:" + JSON.stringify(requestBody) );
+		// console.log("Response:" + JSON.stringify(response.data.result) );
+  
+		const response = await axios.post (
+		  'https://www.mockachino.com/1b9b9eca-13b9-41/login',
+		  requestBody
+		);
+  
+    if (response.data.result=="success") {
+      setResult("Giriş Başarılı");
+      alert("başarılı");
+
+    } else {
+      setResult("Hatalı kullanıcı adı veya şifre");
+      alert("başarısız");
+    }
+
+    console.log("Resp: " + result);
+
+
+		// if (response.data.result=="success") {
+		// 	  setResult("Giriş Başarılı");
+  
+		// } else {
+		// 	  setResult("Hatalı kullanıcı adı veya şifre");
+		// }
+		
+		// console.log("Resp:" + result);
+    // alert(result);
+
+	}
+
+
   return (
     <div className="login">
-<>
+  <form>
   {/* BEGIN HEAD */}
   <meta charSet="utf-8" />
   <title>Metronic | Login Form 1</title>
@@ -25,15 +74,15 @@ function Giris() {
   {/* END SIDEBAR TOGGLER BUTTON */}
   {/* BEGIN LOGO */}
   <div className="logo">
-    <a href="index.html">
+    <Link to="/giris">
       <img src="../../assets/admin/layout3/img/logo-big.png" alt="" />
-    </a>
+    </Link>
   </div>
   {/* END LOGO */}
   {/* BEGIN LOGIN */}
   <div className="content">
     {/* BEGIN LOGIN FORM */}
-    <form className="login-form" action="index.html" method="post">
+    <form className="login-form">
       <h3 className="form-title">Sign In</h3>
       <div className="alert alert-danger display-hide">
         <button className="close" data-close="alert" />
@@ -50,6 +99,7 @@ function Giris() {
           autoComplete="off"
           placeholder="Username"
           name="username"
+          onChange={e=>setName(e.target.value)}
         />
       </div>
       <div className="form-group">
@@ -62,12 +112,13 @@ function Giris() {
           autoComplete="off"
           placeholder="Password"
           name="password"
+          onChange={e=>setPassword(e.target.value)}
         />
       </div>
       <div className="form-actions">
-        <button type="submit" className="btn btn-success uppercase">
+        <a className="btn btn-success uppercase" onClick={()=>myButtonClick()} >
           Login
-        </button>
+        </a>
         <label className="rememberme check">
           <input type="checkbox" name="remember" defaultValue={1} />
           Remember{" "}
@@ -498,7 +549,8 @@ function Giris() {
   {/* BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) */}
   {/* BEGIN CORE PLUGINS */}
   {/*[if lt IE 9]>
-
+<script src="../../assets/global/plugins/respond.min.js"></script>
+<script src="../../assets/global/plugins/excanvas.min.js"></script> 
  
 <![endif]*/}
   {/* END CORE PLUGINS */}
@@ -509,7 +561,10 @@ function Giris() {
   {/* END JAVASCRIPTS */}
   {/* END BODY */}
 
-</>
+  {result}
+  </form>
+
+
 </div>
 );
 }

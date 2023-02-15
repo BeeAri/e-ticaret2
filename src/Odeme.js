@@ -7,7 +7,7 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
-function Tahsilat() {
+function Odeme() {
 
   const[allPayments, setAllPayments] = useState([]);
 
@@ -387,4 +387,4 @@ function Tahsilat() {
   );
 }
 
-export default Tahsilat;
+export default Odeme;

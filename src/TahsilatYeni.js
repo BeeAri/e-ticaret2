@@ -7,20 +7,20 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
-function OdemeYeni() {
+function TahsilatYeni() {
 
-  const[allPayments, setAllPayments] = useState([]);
+  const[allCollections, setAllCollections] = useState([]);
 
   useEffect(() => {
   
-    const getAllPaymentInfo = async () => {
+    const getAllCollectionInfo = async () => {
         let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/odeme'
+            'https://private-10cb8d-baharari.apiary-mock.com/tahsilat'
             );
     
-            console.log("getAllPaymentInfo" + response.data.OdemeListesi);
+            console.log("getAllCollectionInfo" + response.data.TahsilatListesi);
 
-            setAllPayments(response.data.OdemeListesi);
+            setAllCollections(response.data.TahsilatListesi);
 
     }
  
@@ -28,7 +28,7 @@ function OdemeYeni() {
     //getCustomerInfo().catch(console.error);
 
     // call the function
-    getAllPaymentInfo().catch(console.error);
+    getAllCollectionInfo().catch(console.error);
  
   }, [])
 
@@ -45,7 +45,7 @@ function OdemeYeni() {
         {/* BEGIN PAGE TITLE */}
         <div className="page-title">
           <h1>
-            Ödeme <small>Yeni Ödeme</small>
+            Tahsilat <small>Yeni Tahsilat</small>
           </h1>
         </div>
         {/* END PAGE TITLE */}
@@ -297,10 +297,10 @@ function OdemeYeni() {
             <i className="fa fa-circle" />
           </li>
           <li>
-            <a href="form_controls_md.html">Ödeme</a>
+            <a href="form_controls_md.html">Tahsilat</a>
             <i className="fa fa-circle" />
           </li>
-          <li className="active">Yeni Ödeme</li>
+          <li className="active">Yeni Tahsilat</li>
         </ul>
         {/* END PAGE BREADCRUMB */}
         {/* BEGIN PAGE CONTENT INNER */}
@@ -310,19 +310,19 @@ function OdemeYeni() {
             <div className="portlet light">
               <div className="portlet-title">
                 {/* <div class="caption font-green-haze">
-								<i class="icon-settings font-green-haze"></i>
-								<span class="caption-subject bold uppercase"> Horizontal Form</span>
-							</div> */}
+							<i class="icon-settings font-green-haze"></i>
+							<span class="caption-subject bold uppercase"> Horizontal Form</span>
+						</div> */}
                 <div className="actions">
                   {/* <a class="btn btn-circle btn-icon-only blue" href="javascript:;">
-								<i class="icon-cloud-upload"></i>
-								</a>
-								<a class="btn btn-circle btn-icon-only green" href="javascript:;">
-								<i class="icon-wrench"></i>
-								</a>
-								<a class="btn btn-circle btn-icon-only red" href="javascript:;">
-								<i class="icon-trash"></i>
-								</a> */}
+							<i class="icon-cloud-upload"></i>
+							</a>
+							<a class="btn btn-circle btn-icon-only green" href="javascript:;">
+							<i class="icon-wrench"></i>
+							</a>
+							<a class="btn btn-circle btn-icon-only red" href="javascript:;">
+							<i class="icon-trash"></i>
+							</a> */}
                   <a
                     className="btn btn-circle btn-icon-only btn-default fullscreen"
                     href="javascript:;"
@@ -339,14 +339,15 @@ function OdemeYeni() {
                         className="col-md-2 control-label"
                         htmlFor="form_control_1"
                       >
-                        Kime
+                        Müşteri
                       </label>
                       <div className="col-md-10">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="form_control_1"
-                        />
+                        <select className="form-control" id="form_control_1">
+                          <option value="">Lütfen Seçiniz...</option>
+                          <option value="">m1</option>
+                          <option value="">m2</option>
+                          <option value="">m3</option>
+                        </select>
                         <div className="form-control-focus"></div>
                       </div>
                     </div>
@@ -388,49 +389,14 @@ function OdemeYeni() {
                         className="col-md-2 control-label"
                         htmlFor="form_control_1"
                       >
-                        Stok Adedi
-                      </label>
-                      <div className="col-md-10">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="form_control_1"
-                        />
-                        <div className="form-control-focus"></div>
-                        {/* <span class="help-block">Some help goes here...</span> */}
-                      </div>
-                    </div>
-                    <div className="form-group form-md-line-input">
-                      <label
-                        className="col-md-2 control-label"
-                        htmlFor="form_control_1"
-                      >
-                        Ödeme Tarihi
-                      </label>
-                      <div className="col-md-10">
-                        <input
-                          type="text"
-                          className="form-control"
-                          id="form_control_1"
-                          placeholder="GG/AA/YYYY formatında giriniz"
-                        />
-                        <div className="form-control-focus"></div>
-                      </div>
-                    </div>
-                    <div className="form-group form-md-line-input">
-                      <label
-                        className="col-md-2 control-label"
-                        htmlFor="form_control_1"
-                      >
-                        Ödeme Kanalı
+                        İlgili Sipariş
                       </label>
                       <div className="col-md-10">
                         <select className="form-control" id="form_control_1">
                           <option value="">Lütfen Seçiniz...</option>
-                          <option value="">Ankara</option>
-                          <option value="">Bursa</option>
-                          <option value="">İstanbul</option>
-                          <option value="">İzmir</option>
+                          <option value="">s1</option>
+                          <option value="">s2</option>
+                          <option value="">s3</option>
                         </select>
                         <div className="form-control-focus"></div>
                       </div>
@@ -440,14 +406,14 @@ function OdemeYeni() {
                         className="col-md-2 control-label"
                         htmlFor="form_control_1"
                       >
-                        Açıklama
+                        Tahsilat Tarihi
                       </label>
                       <div className="col-md-10">
-                        <textarea
+                        <input
+                          type="text"
                           className="form-control"
-                          rows={3}
-                          placeholder="Açıklama Yazınız..."
-                          defaultValue={""}
+                          id="form_control_1"
+                          placeholder="GG/AA/YYYY şeklinde giriniz."
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -481,11 +447,10 @@ function OdemeYeni() {
 
 
 
-
   <Footer/>
 
 </>
   );
 }
 
-export default OdemeYeni;
+export default TahsilatYeni;
