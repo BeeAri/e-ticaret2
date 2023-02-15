@@ -75,7 +75,7 @@ function Giris() {
   {/* BEGIN LOGO */}
   <div className="logo">
     <Link to="/giris">
-      <img src="../../assets/admin/layout3/img/logo-big.png" alt="" />
+      <img src="assets/admin/layout3/img/logo-big.png" alt="" />
     </Link>
   </div>
   {/* END LOGO */}
@@ -83,7 +83,7 @@ function Giris() {
   <div className="content">
     {/* BEGIN LOGIN FORM */}
     <form className="login-form">
-      <h3 className="form-title">Sign In</h3>
+      <h3 className="form-title">Giriş</h3>
       <div className="alert alert-danger display-hide">
         <button className="close" data-close="alert" />
         <span>Enter any username and password. </span>
@@ -97,7 +97,7 @@ function Giris() {
           className="form-control form-control-solid placeholder-no-fix"
           type="text"
           autoComplete="off"
-          placeholder="Username"
+          placeholder="Kullanıcı Adı"
           name="username"
           onChange={e=>setName(e.target.value)}
         />
@@ -110,25 +110,25 @@ function Giris() {
           className="form-control form-control-solid placeholder-no-fix"
           type="password"
           autoComplete="off"
-          placeholder="Password"
+          placeholder="Şifre"
           name="password"
           onChange={e=>setPassword(e.target.value)}
         />
       </div>
       <div className="form-actions">
         <a className="btn btn-success uppercase" onClick={()=>myButtonClick()} >
-          Login
+          Giriş
         </a>
         <label className="rememberme check">
           <input type="checkbox" name="remember" defaultValue={1} />
-          Remember{" "}
+          Hatırla{" "}
         </label>
         <a href="javascript:;" id="forget-password" className="forget-password">
-          Forgot Password?
+          Şifreni mi unuttun?
         </a>
       </div>
       <div className="login-options">
-        <h4>Or login with</h4>
+        <h4>farklı şekilde giriş yap</h4>
         <ul className="social-icons">
           <li>
             <a
@@ -163,7 +163,7 @@ function Giris() {
       <div className="create-account">
         <p>
           <a href="javascript:;" id="register-btn" className="uppercase">
-            Create an account
+            Yeni hesap oluştur
           </a>
         </p>
       </div>
