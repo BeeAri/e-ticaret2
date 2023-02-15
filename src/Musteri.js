@@ -6,12 +6,20 @@ import axios from "axios";
 
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
+import { useNavigate } from 'react-router-dom';
 
 function Musteri() {
+  const navigate = useNavigate();
+  
   const[allCustomers, setAllCustomers] = useState([]);
 
   useEffect(() => {
   
+    if (!localStorage.getItem("userName"))
+    {
+      navigate('/giris', { replace: true});
+    }
+
     const getAllCustomerInfo = async () => {
         let response = await axios.get(
             'https://private-10cb8d-baharari.apiary-mock.com/musteri'

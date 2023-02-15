@@ -499,7 +499,7 @@ function Header() {
                   </a>
                 </li>
                 <li>
-                  <a href="login.html">
+                  <a href="/giris">
                     <i className="icon-key" /> Log Out{" "}
                   </a>
                 </li>

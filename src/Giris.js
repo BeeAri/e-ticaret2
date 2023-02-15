@@ -3,10 +3,11 @@ import './App.css';
 
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function Giris() {
   	
+  const navigate = useNavigate();
 
 	const[name, setName] = useState(); 
 	const[password, setPassword] = useState(); 
@@ -29,27 +30,30 @@ function Giris() {
 		  requestBody
 		);
   
-    if (response.data.result=="success") {
-      setResult("Giriş Başarılı");
-      alert("başarılı");
+    // if (response.data.result=="success") {
+    //   setResult("Giriş Başarılı");
+    //   alert("başarılı");
 
-    } else {
-      setResult("Hatalı kullanıcı adı veya şifre");
-      alert("başarısız");
-    }
+    // } else {
+    //   setResult("Hatalı kullanıcı adı veya şifre");
+    //   alert("başarısız");
+    // }
 
-    console.log("Resp: " + result);
+    // console.log("Resp: " + result);
 
 
-		// if (response.data.result=="success") {
-		// 	  setResult("Giriş Başarılı");
+		if (response.data.result=="success") {
+        
+			  setResult("Giriş Başarılı");
+        localStorage.setItem("userName", name);
+        navigate('/musteri', { replace: true });
   
-		// } else {
-		// 	  setResult("Hatalı kullanıcı adı veya şifre");
-		// }
+		} else {
+			  setResult("Hatalı kullanıcı adı veya şifre");
+		}
 		
-		// console.log("Resp:" + result);
-    // alert(result);
+		console.log("Resp:" + result);
+    alert(result);
 
 	}
 
