@@ -7,11 +7,19 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
+import { useNavigate } from 'react-router-dom';
+
 function UrunKategorisi() {
+  const navigate = useNavigate();
 
   const[allProductCategory, setAllProductCategory] = useState([]);
 
   useEffect(() => {
+
+    if (!localStorage.getItem("userName"))
+    {
+      navigate('/giris', { replace: true});
+    }
   
     const getAllProductCategoryInfo = async () => {
         let response = await axios.get(

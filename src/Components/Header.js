@@ -472,35 +472,35 @@ function Header() {
               <ul className="dropdown-menu dropdown-menu-default">
                 <li>
                   <a href="extra_profile.html">
-                    <i className="icon-user" /> My Profile{" "}
+                    <i className="icon-user" /> Profilim{" "}
                   </a>
                 </li>
                 <li>
                   <a href="page_calendar.html">
-                    <i className="icon-calendar" /> My Calendar{" "}
+                    <i className="icon-calendar" /> Takvimim{" "}
                   </a>
                 </li>
                 <li>
                   <a href="inbox.html">
-                    <i className="icon-envelope-open" /> My Inbox{" "}
+                    <i className="icon-envelope-open" /> Gelen Kutusu{" "}
                     <span className="badge badge-danger">3 </span>
                   </a>
                 </li>
                 <li>
                   <a href="javascript:;">
-                    <i className="icon-rocket" /> My Tasks{" "}
+                    <i className="icon-rocket" /> Görevlerim{" "}
                     <span className="badge badge-success">7 </span>
                   </a>
                 </li>
                 <li className="divider"></li>
                 <li>
                   <a href="extra_lock.html">
-                    <i className="icon-lock" /> Lock Screen{" "}
+                    <i className="icon-lock" /> Kilit Ekranı{" "}
                   </a>
                 </li>
                 <li>
                   <a href="/giris">
-                    <i className="icon-key" /> Log Out{" "}
+                    <i className="icon-key" /> Çıkış Yap{" "}
                   </a>
                 </li>
               </ul>
@@ -521,7 +521,7 @@ function Header() {
             <input
               type="text"
               className="form-control"
-              placeholder="Search"
+              placeholder="Ara"
               name="query"
             />
             <span className="input-group-btn">

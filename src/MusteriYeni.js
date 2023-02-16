@@ -7,27 +7,105 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
+import { useNavigate } from 'react-router-dom';
+
 function MusteriYeni() {
-  const[allCustomers, setAllCustomers] = useState([]);
+
+  const navigate = useNavigate();
+
+  const[name, setName] = useState();
+  const[surname, setSurname] = useState();
+  const[birthdate, setBirthdate] = useState();
+  const[gender, setGender] = useState();
+  const[gsm, setGSM] = useState();
+  const[email, setEmail] = useState();
+  const[adress, setAdress] = useState();
+  const[city, setCity] = useState();
+
+  const[cities, setCities] = useState([]);
+  const[genders, setGenders] = useState([]);
+  
+
+  const myButtonClick = async () => 
+  {
+    
+    let requestBody = {
+      MusteriAdi:name,
+      MusteriSoyadi:surname,
+      DogumTarihi:birthdate,
+      Cinsiyet:gender,
+      GSM:gsm,
+      Email:email,
+      Adres:adress,
+      Sehir:city
+    }
+    // alert(JSON.stringify(requestBody));
+
+    const response = await axios.post (
+		  'https://private-10cb8d-baharari.apiary-mock.com/musteri',
+		  requestBody
+		);
+
+    // const response2 = await axios.get (
+    //   'https://private-10cb8d-baharari.apiary-mock.com/musterisehir'
+      
+    // );
+    // console.log("MusteriSehir" + JSON.stringify(response.data.MusteriSehirListesi));
+    // setCities(response2.data.MusteriSehirListesi);
+
+    // alert(
+    //   "Service Request: " + JSON.stringify(requestBody) + 
+    //   "  Service Response: " + JSON.stringify(response)
+    // )
+
+    let donusdegeri = response.data.message ;
+    alert(donusdegeri)
+    navigate('/musteri', { replace: true });
+
+
+  } 
 
   useEffect(() => {
-  
-    const getAllCustomerInfo = async () => {
-        let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/musteri'
-            );
-    
-            console.log("getAllCustomerInfo" + response.data.MusteriListesi);
 
-            setAllCustomers(response.data.MusteriListesi);
 
+    const getCities = async () => {
+      let response = await axios.get(
+        'https://private-10cb8d-baharari.apiary-mock.com/musterisehir'
+      );
+      setCities(response.data.MusteriSehirListesi);
     }
+    getCities().catch(console.error);
+
+    const getGenders = async () => {
+      let response = await axios.get(
+        'https://private-10cb8d-baharari.apiary-mock.com/mustericinsiyet'
+      );
+      setGenders(response.data.MusteriCinsiyetListesi);
+    }
+    getGenders().catch(console.error);
+
+
+    if (!localStorage.getItem("userName"))
+    {
+      navigate('/giris', { replace: true});
+    }
+  
+    // const getAllCustomerInfo = async () => {
+    //     let response = await axios.get(
+    //         'https://private-10cb8d-baharari.apiary-mock.com/musteri'
+    //         );
+    
+    //         console.log("getAllCustomerInfo" + response.data.MusteriListesi);
+
+    //         setAllCustomers(response.data.MusteriListesi);
+
+    // }
  
     // call the function
     //getCustomerInfo().catch(console.error);
 
     // call the function
-    getAllCustomerInfo().catch(console.error);
+    // getAllCustomerInfo().catch(console.error);
  
   }, [])
 
@@ -349,6 +427,7 @@ function MusteriYeni() {
                           id="txtName"
                           name="txtName"
                           maxLength={50}
+                          onChange={e=>setName(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -369,6 +448,7 @@ function MusteriYeni() {
                           id="txtSurname"
                           name="txtSurname"
                           maxLength={50}
+                          onChange={e=>setSurname(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -387,6 +467,7 @@ function MusteriYeni() {
                           id="dtBirthDate"
                           name="dtBirthDate"
                           placeholder="GG/AA/YYYY formatında giriniz"
+                          onChange={e=>setBirthdate(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -406,6 +487,13 @@ function MusteriYeni() {
                               id="radio53"
                               name="rdGender"
                               className="md-radiobtn"
+                              onChange={e=>setGender('E')}
+                              // {
+                              //   genders.map( (data) => (
+                              //     value={data.ID}>{data.Cinsiyet}
+                              //   )
+                              //   )
+                              // }
                             />
                             <label htmlFor="radio53">
                               <span />
@@ -420,6 +508,8 @@ function MusteriYeni() {
                               id="radio54"
                               name="rdGender"
                               className="md-radiobtn"
+                              onChange={e=>setGender('K')}
+                             
                             />
                             <label htmlFor="radio54">
                               <span />
@@ -446,6 +536,7 @@ function MusteriYeni() {
                           name="txtEmail"
                           placeholder="email@ornek.com"
                           maxLength={50}
+                          onChange={e=>setEmail(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                         {/* <span class="help-block">Some help goes here...</span> */}
@@ -467,6 +558,7 @@ function MusteriYeni() {
                           name="txtGSM"
                           placeholder="5XXXXXXXXX formatında giriniz"
                           maxLength={10}
+                          onChange={e=>setGSM(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -479,12 +571,14 @@ function MusteriYeni() {
                         Şehir
                       </label>
                       <div className="col-md-10">
-                        <select className="form-control" id="form_control_1">
+                        <select className="form-control" id="form_control_1" onChange={e=>setCity(e.target.value)}>
                           <option value="">Lütfen Seçiniz...</option>
-                          <option value="">Ankara</option>
-                          <option value="">Bursa</option>
-                          <option value="">İstanbul</option>
-                          <option value="">İzmir</option>
+                          {
+                            cities.map( (data) => (
+                              <option value={data.ID}>{data.SehirAdi}</option>
+                            )
+                            )
+                          }
                         </select>
                         <div className="form-control-focus"></div>
                       </div>
@@ -506,6 +600,7 @@ function MusteriYeni() {
                           placeholder="Açık Adresiniz..."
                           maxLength={500}
                           defaultValue={""}
+                          onChange={e=>setAdress(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -514,12 +609,12 @@ function MusteriYeni() {
                   <div className="form-actions">
                     <div className="row">
                       <div className="col-md-offset-2 col-md-10">
-                        <button type="button" className="btn blue">
+                        <a className="btn blue" onClick={()=>myButtonClick()} >
                           Kaydet
-                        </button>
-                        <button type="button" className="btn default">
+                        </a>
+                        {/* <a className="btn default" onClick={()=>myButtonClick1()} >
                           Vazgeç
-                        </button>
+                        </a> */}
                       </div>
                     </div>
                   </div>

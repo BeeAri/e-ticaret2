@@ -7,28 +7,40 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
-function TahsilatYeni() {
+import { useNavigate } from 'react-router-dom';
 
-  const[allCollections, setAllCollections] = useState([]);
+function TahsilatYeni() {
+  const navigate = useNavigate();
+
+  const[musteri, setMusteri] = useState([]);
+  const[tutar, setTutar] = useState([]);
+  const[parabirimi, setParaBirimi] = useState([]);
+  const[ilgilisiparis, setİlgiliSiparis] = useState([]);
+  const[tahsilattarihi, setTahsilatTarihi] = useState([]);
 
   useEffect(() => {
-  
-    const getAllCollectionInfo = async () => {
-        let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/tahsilat'
-            );
-    
-            console.log("getAllCollectionInfo" + response.data.TahsilatListesi);
 
-            setAllCollections(response.data.TahsilatListesi);
-
+    if (!localStorage.getItem("userName"))
+    {
+      navigate('/giris', { replace: true});
     }
+  
+    // const getAllCollectionInfo = async () => {
+    //     let response = await axios.get(
+    //         'https://private-10cb8d-baharari.apiary-mock.com/tahsilat'
+    //         );
+    
+    //         console.log("getAllCollectionInfo" + response.data.TahsilatListesi);
+
+    //         setAllCollections(response.data.TahsilatListesi);
+
+    // }
  
     // call the function
     //getCustomerInfo().catch(console.error);
 
     // call the function
-    getAllCollectionInfo().catch(console.error);
+    // getAllCollectionInfo().catch(console.error);
  
   }, [])
 
@@ -342,7 +354,7 @@ function TahsilatYeni() {
                         Müşteri
                       </label>
                       <div className="col-md-10">
-                        <select className="form-control" id="form_control_1">
+                        <select className="form-control" id="form_control_1" onChange={e=>setMusteri(e.target.value)}>
                           <option value="">Lütfen Seçiniz...</option>
                           <option value="">m1</option>
                           <option value="">m2</option>
@@ -363,6 +375,7 @@ function TahsilatYeni() {
                           type="text"
                           className="form-control"
                           id="form_control_1"
+                          onChange={e=>setTutar(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -375,7 +388,7 @@ function TahsilatYeni() {
                         Para Birimi
                       </label>
                       <div className="col-md-10">
-                        <select className="form-control" id="form_control_1">
+                        <select className="form-control" id="form_control_1" onChange={e=>setParaBirimi(e.target.value)}>
                           <option value="">Lütfen Seçiniz...</option>
                           <option value="">TL</option>
                           <option value="">Euro</option>
@@ -392,7 +405,7 @@ function TahsilatYeni() {
                         İlgili Sipariş
                       </label>
                       <div className="col-md-10">
-                        <select className="form-control" id="form_control_1">
+                        <select className="form-control" id="form_control_1" onChange={e=>setİlgiliSiparis(e.target.value)}>
                           <option value="">Lütfen Seçiniz...</option>
                           <option value="">s1</option>
                           <option value="">s2</option>
@@ -414,6 +427,7 @@ function TahsilatYeni() {
                           className="form-control"
                           id="form_control_1"
                           placeholder="GG/AA/YYYY şeklinde giriniz."
+                          onChange={e=>setTahsilatTarihi(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>

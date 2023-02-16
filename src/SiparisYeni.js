@@ -7,28 +7,41 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
-function SiparisYeni() {
+import { useNavigate } from 'react-router-dom';
 
-  const[allOrders, setAllOrders] = useState([]);
+function SiparisYeni() {
+  const navigate = useNavigate();
+
+  const[siparisiveren, setSiparisiVeren] = useState([]);
+  const[siparistarihi, setSiparisTarihi] = useState([]);
+  const[toplamtutar, setToplamTutar] = useState([]);
+  const[parabirimi, setParaBirimi] = useState([]);
+  const[siparisdetayı, setSiparisDetayi] = useState([]);
+  const[siparisdurumu, setSiparisDurumu] = useState([]);
 
   useEffect(() => {
-  
-    const getAllOrderInfo = async () => {
-        let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/siparis'
-            );
-    
-            console.log("getAllOrderInfo" + response.data.SiparisListesi);
 
-            setAllOrders(response.data.SiparisListesi);
-
+    if (!localStorage.getItem("userName"))
+    {
+      navigate('/giris', { replace: true});
     }
+  
+    // const getAllOrderInfo = async () => {
+    //     let response = await axios.get(
+    //         'https://private-10cb8d-baharari.apiary-mock.com/siparis'
+    //         );
+    
+    //         console.log("getAllOrderInfo" + response.data.SiparisListesi);
+
+    //         setAllOrders(response.data.SiparisListesi);
+
+    // }
  
     // call the function
     //getCustomerInfo().catch(console.error);
 
     // call the function
-    getAllOrderInfo().catch(console.error);
+    // getAllOrderInfo().catch(console.error);
  
   }, [])
 
@@ -342,7 +355,7 @@ function SiparisYeni() {
                         Siparişi Veren
                       </label>
                       <div className="col-md-10">
-                        <select className="form-control" id="form_control_1">
+                        <select className="form-control" id="form_control_1" onChange={e=>setSiparisiVeren(e.target.value)}>
                           <option value="">Lütfen Seçiniz...</option>
                           <option value="">m1</option>
                           <option value="">m2</option>
@@ -364,6 +377,7 @@ function SiparisYeni() {
                           className="form-control"
                           id="form_control_1"
                           placeholder="GG/AA/YYYY şeklinde giriniz."
+                          onChange={e=>setSiparisTarihi(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -380,6 +394,7 @@ function SiparisYeni() {
                           type="text"
                           className="form-control"
                           id="form_control_1"
+                          onChange={e=>setToplamTutar(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -392,7 +407,7 @@ function SiparisYeni() {
                         Para Birimi
                       </label>
                       <div className="col-md-10">
-                        <select className="form-control" id="form_control_1">
+                        <select className="form-control" id="form_control_1" onChange={e=>setParaBirimi(e.target.value)}>
                           <option value="">Lütfen Seçiniz...</option>
                           <option value="">TL</option>
                           <option value="">Euro</option>
@@ -414,6 +429,7 @@ function SiparisYeni() {
                           rows={3}
                           placeholder="Siparişin Detayı Hakkında Yazınız..."
                           defaultValue={""}
+                          onChange={e=>setSiparisDetayi(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -426,7 +442,7 @@ function SiparisYeni() {
                         Sipariş Durumu
                       </label>
                       <div className="col-md-10">
-                        <select className="form-control" id="form_control_1">
+                        <select className="form-control" id="form_control_1" onChange={e=>setSiparisDurumu(e.target.value)}>
                           <option value="">Lütfen Seçiniz...</option>
                           <option value="">Gönderildi</option>
                           <option value="">Yolda</option>

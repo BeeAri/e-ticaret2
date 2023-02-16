@@ -7,28 +7,36 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
-function SehirYeni() {
+import { useNavigate } from 'react-router-dom';
 
-  const[allCity, setAllCity] = useState([]);
+function SehirYeni() {
+  const navigate = useNavigate();
+
+  const[city, setCity] = useState([]);
 
   useEffect(() => {
-  
-    const getAllCityInfo = async () => {
-        let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/sehir'
-            );
-    
-            console.log("getAllCityInfo" + response.data.SehirListesi);
 
-            setAllCity(response.data.SehirListesi);
-
+    if (!localStorage.getItem("userName"))
+    {
+      navigate('/giris', { replace: true});
     }
+  
+    // const getAllCityInfo = async () => {
+    //     let response = await axios.get(
+    //         'https://private-10cb8d-baharari.apiary-mock.com/sehir'
+    //         );
+    
+    //         console.log("getAllCityInfo" + response.data.SehirListesi);
+
+    //         setAllCity(response.data.SehirListesi);
+
+    // }
  
     // call the function
     //getCustomerInfo().catch(console.error);
 
     // call the function
-    getAllCityInfo().catch(console.error);
+    // getAllCityInfo().catch(console.error);
  
   }, [])
 
@@ -346,6 +354,7 @@ function SehirYeni() {
                           type="text"
                           className="form-control"
                           id="form_control_1"
+                          onChange={e=>setCity(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>

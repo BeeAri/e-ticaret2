@@ -366,10 +366,10 @@ function Musteri() {
                     <tbody>
                      
                       {
-            allCustomers.map( (data) => (
+            allCustomers.map( (data, index) => (
               <>
-                    <tr>  
-                        <td>1</td>
+                      <tr key={index}>
+                        <td>{index + 1}</td>  
                         <td>{data.MusteriAdi}</td>
                         <td>{data.MusteriSoyadi}</td>
                         <td>{data.DogumTarihi}</td>

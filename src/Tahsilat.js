@@ -7,11 +7,19 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
+import { useNavigate } from 'react-router-dom';
+
 function Tahsilat() {
+  const navigate = useNavigate();
 
   const[allCollections, setAllCollections] = useState([]);
 
   useEffect(() => {
+
+    if (!localStorage.getItem("userName"))
+    {
+      navigate('/giris', { replace: true});
+    }
   
     const getAllCollectionInfo = async () => {
         let response = await axios.get(

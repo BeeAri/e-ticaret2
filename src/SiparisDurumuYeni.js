@@ -7,28 +7,36 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
+import { useNavigate } from 'react-router-dom';
+
 function SiparisDurumuYeni() {
 
-  const[allOrderStatus, setAllOrderStatus] = useState([]);
+  const navigate = useNavigate();
+  const[siparisdurumu, setSiparisDurumu] = useState([]);
 
   useEffect(() => {
-  
-    const getAllOrderStatusInfo = async () => {
-        let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/siparisdurumu'
-            );
-    
-            console.log("getAllOrderStatusInfo" + response.data.SiparisDurumuListesi);
 
-            setAllOrderStatus(response.data.SiparisDurumuListesi);
-
+    if (!localStorage.getItem("userName"))
+    {
+      navigate('/giris', { replace: true});
     }
+  
+    // const getAllOrderStatusInfo = async () => {
+    //     let response = await axios.get(
+    //         'https://private-10cb8d-baharari.apiary-mock.com/siparisdurumu'
+    //         );
+    
+    //         console.log("getAllOrderStatusInfo" + response.data.SiparisDurumuListesi);
+
+    //         setAllOrderStatus(response.data.SiparisDurumuListesi);
+
+    // }
  
     // call the function
     //getCustomerInfo().catch(console.error);
 
     // call the function
-    getAllOrderStatusInfo().catch(console.error);
+    // getAllOrderStatusInfo().catch(console.error);
  
   }, [])
 
@@ -346,6 +354,7 @@ function SiparisDurumuYeni() {
                           type="text"
                           className="form-control"
                           id="form_control_1"
+                          onChange={e=>setSiparisDurumu(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>

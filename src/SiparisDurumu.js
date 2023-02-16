@@ -7,11 +7,19 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
+import { useNavigate } from 'react-router-dom';
+
 function SiparisDurumu() {
+  const navigate = useNavigate();
 
   const[allOrderStatus, setAllOrderStatus] = useState([]);
 
   useEffect(() => {
+
+    if (!localStorage.getItem("userName"))
+    {
+      navigate('/giris', { replace: true});
+    }
   
     const getAllOrderStatusInfo = async () => {
         let response = await axios.get(

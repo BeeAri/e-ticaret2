@@ -7,11 +7,19 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
+import { useNavigate } from 'react-router-dom';
+
 function UrunYeni() {
+  const navigate = useNavigate();
 
   const[allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
+
+    if (!localStorage.getItem("userName"))
+    {
+      navigate('/giris', { replace: true});
+    }
   
     const getAllProductInfo = async () => {
         let response = await axios.get(

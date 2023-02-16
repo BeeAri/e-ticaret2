@@ -7,28 +7,36 @@ import axios from "axios";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 
-function TahsilatTipiYeni() {
+import { useNavigate } from 'react-router-dom';
 
-  const[allCollectionStatus, setAllCollectionStatus] = useState([]);
+function TahsilatTipiYeni() {
+  const navigate = useNavigate();
+
+  const[tahsilattipi, setTahsilatTipi] = useState([]);
 
   useEffect(() => {
-  
-    const getAllCollectionStatusInfo = async () => {
-        let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/tahsilattipi'
-            );
-    
-            console.log("getAllCollectionStatusInfo" + response.data.TahsilatTipiListesi);
 
-            setAllCollectionStatus(response.data.TahsilatTipiListesi);
-
+    if (!localStorage.getItem("userName"))
+    {
+      navigate('/giris', { replace: true});
     }
+  
+    // const getAllCollectionStatusInfo = async () => {
+    //     let response = await axios.get(
+    //         'https://private-10cb8d-baharari.apiary-mock.com/tahsilattipi'
+    //         );
+    
+    //         console.log("getAllCollectionStatusInfo" + response.data.TahsilatTipiListesi);
+
+    //         setAllCollectionStatus(response.data.TahsilatTipiListesi);
+
+    // }
  
     // call the function
     //getCustomerInfo().catch(console.error);
 
     // call the function
-    getAllCollectionStatusInfo().catch(console.error);
+    // getAllCollectionStatusInfo().catch(console.error);
  
   }, [])
 
@@ -346,6 +354,7 @@ function TahsilatTipiYeni() {
                           type="text"
                           className="form-control"
                           id="form_control_1"
+                          onChange={e=>setTahsilatTipi(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
