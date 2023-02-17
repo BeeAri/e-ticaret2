@@ -464,6 +464,7 @@ function MusteriYeni() {
                         <input
                           type="text"
                           className="form-control"
+                          autoComplete="off"
                           id="dtBirthDate"
                           name="dtBirthDate"
                           placeholder="GG/AA/YYYY formatında giriniz"
@@ -481,28 +482,29 @@ function MusteriYeni() {
                       </label>
                       <div className="col-md-10">
                         <div className="md-radio-inline">
+                        {
+                          genders.map( (data) => (
+
                           <div className="md-radio">
                             <input
                               type="radio"
-                              id="radio53"
+                              id={data.ID}
                               name="rdGender"
                               className="md-radiobtn"
                               onChange={e=>setGender('E')}
-                              // {
-                              //   genders.map( (data) => (
-                              //     value={data.ID}>{data.Cinsiyet}
-                              //   )
-                              //   )
-                              // }
+                        
                             />
-                            <label htmlFor="radio53">
+                            <label htmlFor={data.ID}>
                               <span />
                               <span className="check" />
                               <span className="box" />
-                              Erkek{" "}
+                              {data.Cinsiyet}{" "}
                             </label>
                           </div>
-                          <div className="md-radio">
+                              )
+                              )
+                              }
+                          {/* <div className="md-radio">
                             <input
                               type="radio"
                               id="radio54"
@@ -517,7 +519,7 @@ function MusteriYeni() {
                               <span className="box" />
                               Kadın{" "}
                             </label>
-                          </div>
+                          </div> */}
                         </div>
                       </div>
                     </div>
@@ -532,6 +534,7 @@ function MusteriYeni() {
                         <input
                           type="text"
                           className="form-control"
+                          autoComplete="off"
                           id="txtEmail"
                           name="txtEmail"
                           placeholder="email@ornek.com"
@@ -554,6 +557,7 @@ function MusteriYeni() {
                           required=""
                           type="text"
                           className="form-control"
+                          autoComplete="off"
                           id="txtGSM"
                           name="txtGSM"
                           placeholder="5XXXXXXXXX formatında giriniz"
