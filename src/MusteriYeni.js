@@ -39,7 +39,7 @@ function MusteriYeni() {
       Adres:adress,
       Sehir:city
     }
-    // alert(JSON.stringify(requestBody));
+    //alert(JSON.stringify(requestBody));
 
     const response = await axios.post (
 		  'https://private-10cb8d-baharari.apiary-mock.com/musteri',
@@ -491,7 +491,7 @@ function MusteriYeni() {
                               id={data.ID}
                               name="rdGender"
                               className="md-radiobtn"
-                              onChange={e=>setGender('E')}
+                              onChange={e=>setGender(data.Cinsiyet)}
                         
                             />
                             <label htmlFor={data.ID}>
