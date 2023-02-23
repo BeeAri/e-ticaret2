@@ -30,14 +30,14 @@ function MusteriYeni() {
   {
     
     let requestBody = {
-      MusteriAdi:name,
-      MusteriSoyadi:surname,
-      DogumTarihi:birthdate,
-      Cinsiyet:gender,
-      GSM:gsm,
-      Email:email,
-      Adres:adress,
-      Sehir:city
+      musteriAdi:name,
+      musteriSoyadi:surname,
+      dogumTarihi:birthdate,
+      cinsiyet:gender,
+      gsm:gsm,
+      email:email,
+      adres:adress,
+      sehir:city
     }
     //alert(JSON.stringify(requestBody));
 
@@ -488,17 +488,17 @@ function MusteriYeni() {
                           <div className="md-radio">
                             <input
                               type="radio"
-                              id={data.CinsiyetID}
+                              id={data.cinsiyetID}
                               name="rdGender"
                               className="md-radiobtn"
-                              onChange={e=>setGender(data.CinsiyetAdi)}
+                              onChange={e=>setGender(data.cinsiyetAdi)}
                         
                             />
-                            <label htmlFor={data.CinsiyetID}>
+                            <label htmlFor={data.cinsiyetID}>
                               <span />
                               <span className="check" />
                               <span className="box" />
-                              {data.CinsiyetAdi}{" "}
+                              {data.cinsiyetAdi}{" "}
                             </label>
                           </div>
                               )

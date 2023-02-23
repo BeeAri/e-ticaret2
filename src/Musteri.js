@@ -371,14 +371,14 @@ function Musteri() {
               <>
                       <tr key={index}>
                         <td>{index + 1}</td>  
-                        <td>{data.MusteriAdi}</td>
-                        <td>{data.MusteriSoyadi}</td>
-                        <td>{data.DogumTarihi}</td>
-                        <td>{data.CinsiyetAdi}</td>
-                        <td>{data.Email}</td>
-                        <td>{data.GSM}</td>
-                        <td>{data.SehirAdi}</td>
-                        <td>{data.Adres}</td>
+                        <td>{data.musteriAdi}</td>
+                        <td>{data.musteriSoyadi}</td>
+                        <td>{data.dogumTarihi}</td>
+                        <td>{data.cinsiyetAdi}</td>
+                        <td>{data.email}</td>
+                        <td>{data.gsm}</td>
+                        <td>{data.sehirAdi}</td>
+                        <td>{data.adres}</td>
                       </tr>
                       </>  
             )
