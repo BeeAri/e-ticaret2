@@ -353,7 +353,7 @@ function Sehir() {
               <>
                       <tr>
                         <td>1</td>
-                        <td>{data.Sehir}</td>
+                        <td>{data.SehirAdi}</td>
                       </tr>
               </>
             )

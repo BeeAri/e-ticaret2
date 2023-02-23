@@ -488,17 +488,17 @@ function MusteriYeni() {
                           <div className="md-radio">
                             <input
                               type="radio"
-                              id={data.ID}
+                              id={data.CinsiyetID}
                               name="rdGender"
                               className="md-radiobtn"
-                              onChange={e=>setGender(data.Cinsiyet)}
+                              onChange={e=>setGender(data.CinsiyetAdi)}
                         
                             />
-                            <label htmlFor={data.ID}>
+                            <label htmlFor={data.CinsiyetID}>
                               <span />
                               <span className="check" />
                               <span className="box" />
-                              {data.Cinsiyet}{" "}
+                              {data.CinsiyetAdi}{" "}
                             </label>
                           </div>
                               )
@@ -579,7 +579,7 @@ function MusteriYeni() {
                           <option value="">Lütfen Seçiniz...</option>
                           {
                             cities.map( (data) => (
-                              <option value={data.ID}>{data.SehirAdi}</option>
+                              <option value={data.SehirID}>{data.SehirAdi}</option>
                             )
                             )
                           }

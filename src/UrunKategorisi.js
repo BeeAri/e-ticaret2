@@ -354,8 +354,8 @@ function UrunKategorisi() {
               <>
                       <tr>
                         <td>1</td>
-                        <td>{data.Kategori}</td>
-                        <td>{data.AnaKategori}</td>
+                        <td>{data.KategoriAdi}</td>
+                        <td>{data.AnaKategoriAdi}</td>
                       </tr>
               </>
             )

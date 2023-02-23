@@ -358,11 +358,11 @@ function Odeme() {
               <>
                       <tr>
                         <td>1</td>
-                        <td>{data.Kime}</td>
+                        <td>{data.MusteriAdi}</td>
                         <td>{data.Tutar}</td>
-                        <td>{data.ParaBirimi}</td>
+                        <td>{data.ParaBirimiAdi}</td>
                         <td>{data.OdemeTarihi}</td>
-                        <td>{data.OdemeKanali}</td>
+                        <td>{data.OdemeKanaliAdi}</td>
                         <td>{data.Aciklama}</td>
                       </tr>
               </>

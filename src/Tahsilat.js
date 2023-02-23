@@ -349,6 +349,7 @@ function Tahsilat() {
                         <th>Para Birimi</th>
                         <th>İlgili Sipariş</th>
                         <th>Tahsilat Tarihi</th>
+                        <th>Tahsilat Tipi</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -357,11 +358,12 @@ function Tahsilat() {
               <>
                       <tr>
                         <td>1</td>
-                        <td>{data.Musteri}</td>
+                        <td>{data.MusteriAdi}</td>
                         <td>{data.Tutar}</td>
-                        <td>{data.ParaBirimi}</td>
-                        <td>{data.IlgiliSiparis}</td>
+                        <td>{data.ParaBirimiAdi}</td>
+                        <td>{data.SiparisAdi}</td>
                         <td>{data.TahsilatTarihi}</td>
+                        <td>{data.TahsilatTipi}</td>
                       </tr>
               </>
             )

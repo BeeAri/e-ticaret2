@@ -22,12 +22,13 @@ function Musteri() {
 
     const getAllCustomerInfo = async () => {
         let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/musteri'
+            // 'https://private-10cb8d-baharari.apiary-mock.com/musteri'
+            'http://localhost:5200/Musteri'
             );
     
-            console.log("getAllCustomerInfo" + response.data.MusteriListesi);
+            console.log("getAllCustomerInfo" + response.data);
 
-            setAllCustomers(response.data.MusteriListesi);
+            setAllCustomers(response.data);
 
     }
  
@@ -373,10 +374,10 @@ function Musteri() {
                         <td>{data.MusteriAdi}</td>
                         <td>{data.MusteriSoyadi}</td>
                         <td>{data.DogumTarihi}</td>
-                        <td>{data.Cinsiyet}</td>
+                        <td>{data.CinsiyetAdi}</td>
                         <td>{data.Email}</td>
                         <td>{data.GSM}</td>
-                        <td>{data.Sehir}</td>
+                        <td>{data.SehirAdi}</td>
                         <td>{data.Adres}</td>
                       </tr>
                       </>  

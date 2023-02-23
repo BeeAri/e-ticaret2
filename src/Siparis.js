@@ -358,12 +358,12 @@ function Siparis() {
               <>
                       <tr>
                         <td>1</td>
-                        <td>{data.SiparisiVeren}</td>
+                        <td>{data.MusteriAdi}</td>
                         <td>{data.SiparisTarihi}</td>
                         <td>{data.ToplamTutar}</td>
-                        <td>{data.ParaBirimi}</td>
+                        <td>{data.ParaBirimiAdi}</td>
                         <td>{data.SiparisDetayi}</td>
-                        <td>{data.TeslimDurumu}</td>
+                        <td>{data.SiparisDurumu}</td>
                       </tr>
                       </>
             )

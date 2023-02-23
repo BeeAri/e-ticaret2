@@ -360,9 +360,9 @@ function Urun() {
                         <td>1</td>
                         <td>{data.UrunAdi}</td>
                         <td>{data.UrunKodu}</td>
-                        <td>{data.Kategori}</td>
+                        <td>{data.KategoriAdi}</td>
                         <td>{data.Fiyat}</td>
-                        <td>{data.ParaBirimi}</td>
+                        <td>{data.ParaBirimiAdi}</td>
                         <td>{data.StokAdedi}</td>
                         <td>{data.Aciklama}</td>
                       </tr>
