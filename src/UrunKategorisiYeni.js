@@ -13,6 +13,29 @@ function UrunKategorisiYeni() {
   const navigate = useNavigate();
 
   const[allProductCategory, setAllProductCategory] = useState([]);
+  const[maincategory, setMaincategory] = useState([]);
+  const[category, setCategory] = useState([]);
+
+  const myButtonClick = async () => 
+  {
+    
+    let requestBody = {
+
+      kategoriAdi:category,
+      anakategoriAdi:maincategory
+    }
+    //alert(JSON.stringify(requestBody));
+
+    const response = await axios.post (
+		  'https://private-10cb8d-baharari.apiary-mock.com/urunkategorisi',
+		  requestBody
+		);
+
+    let donusdegeri = response.data.message ;
+    alert(donusdegeri)
+    navigate('/urunkategorisi', { replace: true });
+  
+  }
 
   useEffect(() => {
 
@@ -342,6 +365,24 @@ function UrunKategorisiYeni() {
               <div className="portlet-body form">
                 <form role="form" className="form-horizontal">
                   <div className="form-body">
+                  <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                        Ana Kategori
+                      </label>
+                      <div className="col-md-10">
+                        <select className="form-control" id="form_control_1" onChange={e=>setMaincategory(e.target.value)}>
+                          <option value="">Lütfen Seçiniz...</option>
+                          <option value="">1</option>
+                          <option value="">2</option>
+                          <option value="">3</option>
+                          <option value="">Yeni Ana Kategori</option>
+                        </select>
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
                     <div className="form-group form-md-line-input">
                       <label
                         className="col-md-2 control-label"
@@ -354,6 +395,7 @@ function UrunKategorisiYeni() {
                           type="text"
                           className="form-control"
                           id="form_control_1"
+                          onChange={e=>setCategory(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -362,9 +404,9 @@ function UrunKategorisiYeni() {
                   <div className="form-actions">
                     <div className="row">
                       <div className="col-md-offset-2 col-md-10">
-                        <button type="button" className="btn blue">
+                        <a className="btn blue" onClick={()=>myButtonClick()} >
                           Kaydet
-                        </button>
+                        </a>
                         <button type="button" className="btn default">
                           Vazgeç
                         </button>

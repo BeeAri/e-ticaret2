@@ -12,7 +12,27 @@ import { useNavigate } from 'react-router-dom';
 function SiparisDurumuYeni() {
 
   const navigate = useNavigate();
-  const[siparisdurumu, setSiparisDurumu] = useState([]);
+  const[orderstatus, setOrderstatus] = useState([]);
+
+  const myButtonClick = async () => 
+  {
+    
+    let requestBody = {
+
+      siparisDurumu:orderstatus
+    }
+    //alert(JSON.stringify(requestBody));
+
+    const response = await axios.post (
+		  'https://private-10cb8d-baharari.apiary-mock.com/siparisdurumu',
+		  requestBody
+		);
+
+    let donusdegeri = response.data.message ;
+    alert(donusdegeri)
+    navigate('/siparisdurumu', { replace: true });
+  
+  }
 
   useEffect(() => {
 
@@ -354,7 +374,7 @@ function SiparisDurumuYeni() {
                           type="text"
                           className="form-control"
                           id="form_control_1"
-                          onChange={e=>setSiparisDurumu(e.target.value)}
+                          onChange={e=>setOrderstatus(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -363,9 +383,9 @@ function SiparisDurumuYeni() {
                   <div className="form-actions">
                     <div className="row">
                       <div className="col-md-offset-2 col-md-10">
-                        <button type="button" className="btn blue">
+                        <a className="btn blue" onClick={()=>myButtonClick()} >
                           Kaydet
-                        </button>
+                        </a>
                         <button type="button" className="btn default">
                           Vazgeç
                         </button>

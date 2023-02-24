@@ -23,12 +23,13 @@ function Tahsilat() {
   
     const getAllCollectionInfo = async () => {
         let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/tahsilat'
+            // 'https://private-10cb8d-baharari.apiary-mock.com/tahsilat'
+            'http://localhost:5200/Tahsilat'
             );
     
-            console.log("getAllCollectionInfo" + response.data.TahsilatListesi);
+            console.log("getAllCollectionInfo" + response.data);
 
-            setAllCollections(response.data.TahsilatListesi);
+            setAllCollections(response.data);
 
     }
  
@@ -347,23 +348,23 @@ function Tahsilat() {
                         <th>Müşteri</th>
                         <th>Tutar</th>
                         <th>Para Birimi</th>
-                        <th>İlgili Sipariş</th>
+                        <th>İlgili Sipariş Id ve Detayı</th>
                         <th>Tahsilat Tarihi</th>
                         <th>Tahsilat Tipi</th>
                       </tr>
                     </thead>
                     <tbody>
                     {
-            allCollections.map( (data) => (
+            allCollections.map( (data, index) => (
               <>
-                      <tr>
-                        <td>1</td>
-                        <td>{data.MusteriAdi}</td>
-                        <td>{data.Tutar}</td>
-                        <td>{data.ParaBirimiAdi}</td>
-                        <td>{data.SiparisAdi}</td>
-                        <td>{data.TahsilatTarihi}</td>
-                        <td>{data.TahsilatTipi}</td>
+                      <tr key={index}>
+                        <td>{index + 1}</td> 
+                        <td>{data.musteriAdi}-{data.musteriSoyadi}</td>
+                        <td>{data.tutar}</td>
+                        <td>{data.paraBirimiAdi}</td>
+                        <td>{data.siparisId}-{data.siparisDetayi}</td>
+                        <td>{data.tahsilatTarihi}</td>
+                        <td>{data.tahsilatTipi}</td>
                       </tr>
               </>
             )

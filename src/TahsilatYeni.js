@@ -12,11 +12,37 @@ import { useNavigate } from 'react-router-dom';
 function TahsilatYeni() {
   const navigate = useNavigate();
 
-  const[musteri, setMusteri] = useState([]);
-  const[tutar, setTutar] = useState([]);
-  const[parabirimi, setParaBirimi] = useState([]);
-  const[ilgilisiparis, setİlgiliSiparis] = useState([]);
-  const[tahsilattarihi, setTahsilatTarihi] = useState([]);
+  const[id, setId] = useState();
+  //const[surname, setSurname] = useState();
+  const[amount, setAmount] = useState([]);
+  const[relatedorder, setRelatedorder] = useState([]);
+  const[currencyunit, setCurrencyunit] = useState([]);
+  const[collectiondate, setCollectiondate] = useState([]);
+
+  const myButtonClick = async () => 
+  {
+    
+    let requestBody = {
+      musteriId:id,
+      //musteriSoyadi:surname,
+      tutar:amount,
+      parabirimi:currencyunit,
+      ilgilisiparis:relatedorder,
+      tahsilattarihi:collectiondate
+    }
+    //alert(JSON.stringify(requestBody));
+
+    const response = await axios.post (
+		  'https://private-10cb8d-baharari.apiary-mock.com/tahsilat',
+		  requestBody
+		);
+
+
+    let donusdegeri = response.data.message ;
+    alert(donusdegeri)
+    navigate('/tahsilat', { replace: true });
+
+  }
 
   useEffect(() => {
 
@@ -354,7 +380,7 @@ function TahsilatYeni() {
                         Müşteri
                       </label>
                       <div className="col-md-10">
-                        <select className="form-control" id="form_control_1" onChange={e=>setMusteri(e.target.value)}>
+                        <select className="form-control" id="form_control_1" onChange={e=>setId(e.target.value)}>
                           <option value="">Lütfen Seçiniz...</option>
                           <option value="">m1</option>
                           <option value="">m2</option>
@@ -375,7 +401,7 @@ function TahsilatYeni() {
                           type="text"
                           className="form-control"
                           id="form_control_1"
-                          onChange={e=>setTutar(e.target.value)}
+                          onChange={e=>setAmount(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -388,7 +414,7 @@ function TahsilatYeni() {
                         Para Birimi
                       </label>
                       <div className="col-md-10">
-                        <select className="form-control" id="form_control_1" onChange={e=>setParaBirimi(e.target.value)}>
+                        <select className="form-control" id="form_control_1" onChange={e=>setCurrencyunit(e.target.value)}>
                           <option value="">Lütfen Seçiniz...</option>
                           <option value="">TL</option>
                           <option value="">Euro</option>
@@ -405,7 +431,7 @@ function TahsilatYeni() {
                         İlgili Sipariş
                       </label>
                       <div className="col-md-10">
-                        <select className="form-control" id="form_control_1" onChange={e=>setİlgiliSiparis(e.target.value)}>
+                        <select className="form-control" id="form_control_1" onChange={e=>setRelatedorder(e.target.value)}>
                           <option value="">Lütfen Seçiniz...</option>
                           <option value="">s1</option>
                           <option value="">s2</option>
@@ -427,7 +453,7 @@ function TahsilatYeni() {
                           className="form-control"
                           id="form_control_1"
                           placeholder="GG/AA/YYYY şeklinde giriniz."
-                          onChange={e=>setTahsilatTarihi(e.target.value)}
+                          onChange={e=>setCollectiondate(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -436,9 +462,9 @@ function TahsilatYeni() {
                   <div className="form-actions">
                     <div className="row">
                       <div className="col-md-offset-2 col-md-10">
-                        <button type="button" className="btn blue">
+                        <a className="btn blue" onClick={()=>myButtonClick()} >
                           Kaydet
-                        </button>
+                        </a>
                         <button type="button" className="btn default">
                           Vazgeç
                         </button>

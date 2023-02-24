@@ -23,12 +23,13 @@ function Siparis() {
   
     const getAllOrderInfo = async () => {
         let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/siparis'
+            // 'https://private-10cb8d-baharari.apiary-mock.com/siparis'
+            'http://localhost:5200/Siparis'
             );
     
-            console.log("getAllOrderInfo" + response.data.SiparisListesi);
+            console.log("getAllOrderInfo" + response.data);
 
-            setAllOrders(response.data.SiparisListesi);
+            setAllOrders(response.data);
 
     }
  
@@ -354,16 +355,16 @@ function Siparis() {
                     </thead>
                     <tbody>
                     {
-            allOrders.map( (data) => (
+            allOrders.map( (data, index) => (
               <>
-                      <tr>
-                        <td>1</td>
-                        <td>{data.MusteriAdi}</td>
-                        <td>{data.SiparisTarihi}</td>
-                        <td>{data.ToplamTutar}</td>
-                        <td>{data.ParaBirimiAdi}</td>
-                        <td>{data.SiparisDetayi}</td>
-                        <td>{data.SiparisDurumu}</td>
+                      <tr key={index}>
+                        <td>{index + 1}</td> 
+                        <td>{data.musteriAdi}-{data.musteriSoyadi}</td>
+                        <td>{data.siparisTarihi}</td>
+                        <td>{data.toplamTutar}</td>
+                        <td>{data.paraBirimiAdi}</td>
+                        <td>{data.siparisDetayi}</td>
+                        <td>{data.siparisDurumu}</td>
                       </tr>
                       </>
             )

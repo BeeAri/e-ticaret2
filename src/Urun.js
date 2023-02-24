@@ -23,12 +23,13 @@ function Urun() {
   
     const getAllProductInfo = async () => {
         let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/urun'
+            // 'https://private-10cb8d-baharari.apiary-mock.com/urun'
+            'http://localhost:5200/Urun'
             );
     
-            console.log("getAllProductInfo" + response.data.UrunListesi);
+            console.log("getAllProductInfo" + response.data);
 
-            setAllProducts(response.data.UrunListesi);
+            setAllProducts(response.data);
 
     }
  
@@ -343,9 +344,11 @@ function Urun() {
                 <thead>
                   <tr>
                     <th>#</th>
+                    <th>Ürün ID</th>
                     <th>Ürün Adı</th>
                     <th>Kodu</th>
-                    <th>Kategorisi</th>
+                    <th>Ana Kategori</th>
+                    <th>Kategori</th>
                     <th>Fiyatı</th>
                     <th>Para Birimi</th>
                     <th>Stok Adedi</th>
@@ -354,17 +357,19 @@ function Urun() {
                 </thead>
                 <tbody>
                       {
-            allProducts.map( (data) => (
+            allProducts.map( (data, index) => (
               <>
-                    <tr>  
-                        <td>1</td>
-                        <td>{data.UrunAdi}</td>
-                        <td>{data.UrunKodu}</td>
-                        <td>{data.KategoriAdi}</td>
-                        <td>{data.Fiyat}</td>
-                        <td>{data.ParaBirimiAdi}</td>
-                        <td>{data.StokAdedi}</td>
-                        <td>{data.Aciklama}</td>
+                    <tr key={index}>
+                        <td>{index + 1}</td> 
+                        <td>{data.urunId}</td> 
+                        <td>{data.urunAdi}</td>
+                        <td>{data.urunKodu}</td>
+                        <td>{data.anaKategoriAdi}</td>
+                        <td>{data.urunKategorisiAdi}</td>
+                        <td>{data.fiyat}</td>
+                        <td>{data.paraBirimiAdi}</td>
+                        <td>{data.stokAdedi}</td>
+                        <td>{data.aciklama}</td>
                       </tr>
                       </>  
             )

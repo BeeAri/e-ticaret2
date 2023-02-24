@@ -349,10 +349,10 @@ function TahsilatTipi() {
                 </thead>
                 <tbody>
                 {
-                allCollectionStatus.map( (data) => (
+                allCollectionStatus.map( (data, index) => (
               <>
-                      <tr>
-                        <td>1</td>
+                      <tr key={index}>
+                        <td>{index + 1}</td> 
                         <td>{data.TahsilatTipi}</td>
                       </tr>
               </>

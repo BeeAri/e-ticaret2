@@ -349,10 +349,10 @@ function SiparisDurumu() {
                     </thead>
                     <tbody>
                     {
-            allOrderStatus.map( (data) => (
+            allOrderStatus.map( (data, index) => (
               <>
-                      <tr>
-                        <td>1</td>
+                      <tr key={index}>
+                        <td>{index + 1}</td> 
                         <td>{data.SiparisDurumu}</td>
                       </tr>
               </>

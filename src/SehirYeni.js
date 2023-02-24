@@ -14,6 +14,26 @@ function SehirYeni() {
 
   const[city, setCity] = useState([]);
 
+  const myButtonClick = async () => 
+  {
+    
+    let requestBody = {
+      
+      sehirAdi:city
+    }
+    //alert(JSON.stringify(requestBody));
+
+    const response = await axios.post (
+		  'https://private-10cb8d-baharari.apiary-mock.com/sehir',
+		  requestBody
+		);
+
+    let donusdegeri = response.data.message ;
+    alert(donusdegeri)
+    navigate('/sehir', { replace: true });
+  
+  }
+
   useEffect(() => {
 
     if (!localStorage.getItem("userName"))
@@ -363,9 +383,9 @@ function SehirYeni() {
                   <div className="form-actions">
                     <div className="row">
                       <div className="col-md-offset-2 col-md-10">
-                        <button type="button" className="btn blue">
+                        <a className="btn blue" onClick={()=>myButtonClick()} >
                           Kaydet
-                        </button>
+                        </a>
                         <button type="button" className="btn default">
                           Vazgeç
                         </button>

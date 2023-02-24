@@ -12,13 +12,53 @@ import { useNavigate } from 'react-router-dom';
 function OdemeYeni() {
   const navigate = useNavigate();
 
-  const[kime, setKime] = useState([]);
-  const[tutar, setTutar] = useState([]);
-  const[parabirimi, setParaBirimi] = useState([]);
-  const[stokadedi, setStokAdedi] = useState([]);
-  const[odemetarihi, setOdemeTarihi] = useState([]);
-  const[odemekanali, setOdemeKanali] = useState([]);
-  const[aciklama, setAciklama] = useState([]);
+  const[name, setName] = useState([]);
+  const[surname, setSurname] = useState([]);
+  const[amount, setAmount] = useState([]);
+  const[currencyunit, setCurrencyunit] = useState([]);
+  const[stock, setStock] = useState([]);
+  const[paymentdate, setPaymentdate] = useState([]);
+  const[paymentchannel, setPaymentchannel] = useState([]);
+  const[description, setDescription] = useState([]);
+
+  const myButtonClick = async () => 
+  {
+    
+    let requestBody = {
+      musteriAdi:name,
+      musteriSoyadi:surname,
+      tutar:amount,
+      parabirimi:currencyunit,
+      stokadedi:stock,
+      odemetarihi:paymentdate,
+      odemekanali:paymentchannel,
+      aciklama:description
+    }
+    //alert(JSON.stringify(requestBody));
+
+    const response = await axios.post (
+		  'https://private-10cb8d-baharari.apiary-mock.com/odeme',
+		  requestBody
+		);
+
+    // const response2 = await axios.get (
+    //   'https://private-10cb8d-baharari.apiary-mock.com/musterisehir'
+      
+    // );
+    // console.log("MusteriSehir" + JSON.stringify(response.data.MusteriSehirListesi));
+    // setCities(response2.data.MusteriSehirListesi);
+
+    // alert(
+    //   "Service Request: " + JSON.stringify(requestBody) + 
+    //   "  Service Response: " + JSON.stringify(response)
+    // )
+
+    let donusdegeri = response.data.message ;
+    alert(donusdegeri)
+    navigate('/odeme', { replace: true });
+
+
+  } 
 
   useEffect(() => {
 
@@ -353,14 +393,14 @@ function OdemeYeni() {
                         className="col-md-2 control-label"
                         htmlFor="form_control_1"
                       >
-                        Kime
+                        Müşteri Adı
                       </label>
                       <div className="col-md-10">
                         <input
                           type="text"
                           className="form-control"
                           id="form_control_1"
-                          onChange={e=>setKime(e.target.value)}
+                          onChange={e=>setName(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -370,14 +410,31 @@ function OdemeYeni() {
                         className="col-md-2 control-label"
                         htmlFor="form_control_1"
                       >
-                        Tutar
+                        Müşteri Soyadı
                       </label>
                       <div className="col-md-10">
                         <input
                           type="text"
                           className="form-control"
                           id="form_control_1"
-                          onChange={e=>setTutar(e.target.value)}
+                          onChange={e=>setSurname(e.target.value)}
+                        />
+                        <div className="form-control-focus"></div>
+                      </div>
+                    </div>
+                    <div className="form-group form-md-line-input">
+                      <label
+                        className="col-md-2 control-label"
+                        htmlFor="form_control_1"
+                      >
+                       Tutar 
+                      </label>
+                      <div className="col-md-10">
+                        <input
+                          type="text"
+                          className="form-control"
+                          id="form_control_1"
+                          onChange={e=>setAmount(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -390,7 +447,7 @@ function OdemeYeni() {
                         Para Birimi
                       </label>
                       <div className="col-md-10">
-                        <select className="form-control" id="form_control_1" onChange={e=>setParaBirimi(e.target.value)}>
+                        <select className="form-control" id="form_control_1" onChange={e=>setCurrencyunit(e.target.value)}>
                           <option value="">Lütfen Seçiniz...</option>
                           <option value="">TL</option>
                           <option value="">Euro</option>
@@ -411,7 +468,7 @@ function OdemeYeni() {
                           type="text"
                           className="form-control"
                           id="form_control_1"
-                          onChange={e=>setStokAdedi(e.target.value)}
+                          onChange={e=>setStock(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                         {/* <span class="help-block">Some help goes here...</span> */}
@@ -430,7 +487,7 @@ function OdemeYeni() {
                           className="form-control"
                           id="form_control_1"
                           placeholder="GG/AA/YYYY formatında giriniz"
-                          onChange={e=>setOdemeTarihi(e.target.value)}
+                          onChange={e=>setPaymentdate(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -443,7 +500,7 @@ function OdemeYeni() {
                         Ödeme Kanalı
                       </label>
                       <div className="col-md-10">
-                        <select className="form-control" id="form_control_1" onChange={e=>setOdemeKanali(e.target.value)}>
+                        <select className="form-control" id="form_control_1" onChange={e=>setPaymentchannel(e.target.value)}>
                           <option value="">Lütfen Seçiniz...</option>
                           <option value="">Ankara</option>
                           <option value="">Bursa</option>
@@ -466,7 +523,7 @@ function OdemeYeni() {
                           rows={3}
                           placeholder="Açıklama Yazınız..."
                           defaultValue={""}
-                          onChange={e=>setAciklama(e.target.value)}
+                          onChange={e=>setDescription(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -475,9 +532,9 @@ function OdemeYeni() {
                   <div className="form-actions">
                     <div className="row">
                       <div className="col-md-offset-2 col-md-10">
-                        <button type="button" className="btn blue">
+                      <a className="btn blue" onClick={()=>myButtonClick()} >
                           Kaydet
-                        </button>
+                        </a>
                         <button type="button" className="btn default">
                           Vazgeç
                         </button>

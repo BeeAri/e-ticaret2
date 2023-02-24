@@ -13,6 +13,39 @@ function UrunYeni() {
   const navigate = useNavigate();
 
   const[allProducts, setAllProducts] = useState([]);
+  const[productname, setProductname] = useState([]);
+  const[productcode, setProductcode] = useState([]);
+  const[productcategory, setProductcategory] = useState([]);
+  const[price, setPrice] = useState([]);
+  const[currencyunit, setCurrencyunit] = useState([]);
+  const[stocktotal, setStocktotal] = useState([]);
+  const[description, setDescription] = useState([]);
+
+  const myButtonClick = async () => 
+  {
+    
+    let requestBody = {
+      
+      urunadi:productname,
+      urunkodu:productcode,
+      urunkategorisi:productcategory,
+      fiyat:price,
+      parabirimi:currencyunit,
+      stokadedi:stocktotal,
+      aciklama:description
+    }
+    //alert(JSON.stringify(requestBody));
+
+    const response = await axios.post (
+		  'https://private-10cb8d-baharari.apiary-mock.com/urun',
+		  requestBody
+		);
+
+    let donusdegeri = response.data.message ;
+    alert(donusdegeri)
+    navigate('/urun', { replace: true });
+  
+  }
 
   useEffect(() => {
 
@@ -354,6 +387,7 @@ function UrunYeni() {
                           type="text"
                           className="form-control"
                           id="form_control_1"
+                          onChange={e=>setProductname(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -363,13 +397,14 @@ function UrunYeni() {
                         className="col-md-2 control-label"
                         htmlFor="form_control_1"
                       >
-                        Kodu
+                        Ürün Kodu
                       </label>
                       <div className="col-md-10">
                         <input
                           type="text"
                           className="form-control"
                           id="form_control_1"
+                          onChange={e=>setProductcode(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -382,7 +417,7 @@ function UrunYeni() {
                         Kategorisi
                       </label>
                       <div className="col-md-10">
-                        <select className="form-control" id="form_control_1">
+                        <select className="form-control" id="form_control_1" onChange={e=>setProductcategory(e.target.value)}>
                           <option value="">Lütfen Seçiniz...</option>
                           <option value="">1</option>
                           <option value="">2</option>
@@ -403,6 +438,7 @@ function UrunYeni() {
                           type="text"
                           className="form-control"
                           id="form_control_1"
+                          onChange={e=>setPrice(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -415,7 +451,7 @@ function UrunYeni() {
                         Para Birimi
                       </label>
                       <div className="col-md-10">
-                        <select className="form-control" id="form_control_1">
+                        <select className="form-control" id="form_control_1" onChange={e=>setCurrencyunit(e.target.value)}>
                           <option value="">Lütfen Seçiniz...</option>
                           <option value="">TL</option>
                           <option value="">Euro</option>
@@ -436,6 +472,7 @@ function UrunYeni() {
                           type="text"
                           className="form-control"
                           id="form_control_1"
+                          onChange={e=>setStocktotal(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                         {/* <span class="help-block">Some help goes here...</span> */}
@@ -454,6 +491,7 @@ function UrunYeni() {
                           rows={3}
                           placeholder="Ürün Hakkında Açıklama Yazınız..."
                           defaultValue={""}
+                          onChange={e=>setDescription(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -462,9 +500,9 @@ function UrunYeni() {
                   <div className="form-actions">
                     <div className="row">
                       <div className="col-md-offset-2 col-md-10">
-                        <button type="button" className="btn blue">
+                        <a className="btn blue" onClick={()=>myButtonClick()} >
                           Kaydet
-                        </button>
+                        </a>
                         <button type="button" className="btn default">
                           Vazgeç
                         </button>

@@ -42,7 +42,8 @@ function MusteriYeni() {
     //alert(JSON.stringify(requestBody));
 
     const response = await axios.post (
-		  'https://private-10cb8d-baharari.apiary-mock.com/musteri',
+		  // 'https://private-10cb8d-baharari.apiary-mock.com/musteri'
+      'http://localhost:5200/Musteri',
 		  requestBody
 		);
 
@@ -75,6 +76,7 @@ function MusteriYeni() {
       setCities(response.data.MusteriSehirListesi);
     }
     getCities().catch(console.error);
+
 
     const getGenders = async () => {
       let response = await axios.get(
@@ -488,13 +490,13 @@ function MusteriYeni() {
                           <div className="md-radio">
                             <input
                               type="radio"
-                              id={data.cinsiyetID}
+                              id={data.cinsiyetId}
                               name="rdGender"
                               className="md-radiobtn"
                               onChange={e=>setGender(data.cinsiyetAdi)}
                         
                             />
-                            <label htmlFor={data.cinsiyetID}>
+                            <label htmlFor={data.cinsiyetId}>
                               <span />
                               <span className="check" />
                               <span className="box" />

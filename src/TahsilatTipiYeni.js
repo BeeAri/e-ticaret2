@@ -12,7 +12,27 @@ import { useNavigate } from 'react-router-dom';
 function TahsilatTipiYeni() {
   const navigate = useNavigate();
 
-  const[tahsilattipi, setTahsilatTipi] = useState([]);
+  const[collectiontype, setCollectiontype] = useState([]);
+
+  const myButtonClick = async () => 
+  {
+    
+    let requestBody = {
+
+      tahsilattipi: collectiontype
+    }
+    //alert(JSON.stringify(requestBody));
+
+    const response = await axios.post (
+		  'https://private-10cb8d-baharari.apiary-mock.com/tahsilattipi',
+		  requestBody
+		);
+
+    let donusdegeri = response.data.message ;
+    alert(donusdegeri)
+    navigate('/tahsilattipi', { replace: true });
+  
+  }
 
   useEffect(() => {
 
@@ -354,7 +374,7 @@ function TahsilatTipiYeni() {
                           type="text"
                           className="form-control"
                           id="form_control_1"
-                          onChange={e=>setTahsilatTipi(e.target.value)}
+                          onChange={e=>setCollectiontype(e.target.value)}
                         />
                         <div className="form-control-focus"></div>
                       </div>
@@ -363,9 +383,9 @@ function TahsilatTipiYeni() {
                   <div className="form-actions">
                     <div className="row">
                       <div className="col-md-offset-2 col-md-10">
-                        <button type="button" className="btn blue">
+                        <a className="btn blue" onClick={()=>myButtonClick()} >
                           Kaydet
-                        </button>
+                        </a>
                         <button type="button" className="btn default">
                           Vazgeç
                         </button>
