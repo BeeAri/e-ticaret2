@@ -23,12 +23,13 @@ function Sehir() {
   
     const getAllCityInfo = async () => {
         let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/sehir'
+            // 'https://private-10cb8d-baharari.apiary-mock.com/sehir'
+            'http://localhost:5200/Sehir'
             );
     
-            console.log("getAllCityInfo" + response.data.SehirListesi);
+            console.log("getAllCityInfo" + response.data);
 
-            setAllCity(response.data.SehirListesi);
+            setAllCity(response.data);
 
     }
  
@@ -353,7 +354,7 @@ function Sehir() {
               <>
                       <tr key={index}>
                         <td>{index + 1}</td> 
-                        <td>{data.SehirAdi}</td>
+                        <td>{data.sehirAdi}</td>
                       </tr>
               </>
             )

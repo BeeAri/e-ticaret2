@@ -23,12 +23,13 @@ function SiparisDurumu() {
   
     const getAllOrderStatusInfo = async () => {
         let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/siparisdurumu'
+            // 'https://private-10cb8d-baharari.apiary-mock.com/siparisdurumu'
+            'http://localhost:5200/SiparisDurumu'
             );
     
-            console.log("getAllOrderStatusInfo" + response.data.SiparisDurumuListesi);
+            console.log("getAllOrderStatusInfo" + response.data);
 
-            setAllOrderStatus(response.data.SiparisDurumuListesi);
+            setAllOrderStatus(response.data);
 
     }
  
@@ -353,7 +354,7 @@ function SiparisDurumu() {
               <>
                       <tr key={index}>
                         <td>{index + 1}</td> 
-                        <td>{data.SiparisDurumu}</td>
+                        <td>{data.siparisDurumu1}</td>
                       </tr>
               </>
             )

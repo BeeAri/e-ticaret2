@@ -23,12 +23,13 @@ function UrunKategorisi() {
   
     const getAllProductCategoryInfo = async () => {
         let response = await axios.get(
-            'https://private-10cb8d-baharari.apiary-mock.com/urunkategorisi'
+            // 'https://private-10cb8d-baharari.apiary-mock.com/urunkategorisi'
+            'http://localhost:5200/UrunKategorisi'
             );
     
-            console.log("getAllProductCategoryInfo" + response.data.UrunKategorisiListesi);
+            console.log("getAllProductCategoryInfo" + response.data);
 
-            setAllProductCategory(response.data.UrunKategorisiListesi);
+            setAllProductCategory(response.data);
 
     }
  
@@ -350,12 +351,12 @@ function UrunKategorisi() {
                     </thead>
                     <tbody>
                     {
-                allProductCategory.map( (data) => (
+                allProductCategory.map( (data, index) => (
               <>
-                      <tr>
-                        <td>1</td>
-                        <td>{data.KategoriAdi}</td>
-                        <td>{data.AnaKategoriAdi}</td>
+                      <tr key={index}>
+                        <td>{index + 1}</td> 
+                        <td>{data.urunKategorisiAdi}</td>
+                        <td>{data.anaKategoriAdi}</td>
                       </tr>
               </>
             )
